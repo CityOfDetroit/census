@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>LITCH | City of Detroit</title>
+  <meta name="description" content="Application to help track citizen radio patrols in the City of Detroit">
+  <meta name="author" content="Edgar Montes">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0" />
+  <!--build:css css/styles.min.css-->
+  <link rel="shortcut icon" type="image/png" href="img/favicon.ico"/>
+  <link href="./node_modules/mapbox-gl/dist/mapbox-gl.css" rel="stylesheet" />
+  <link rel="stylesheet" href="./node_modules/@mapbox/mapbox-gl-geocoder/dist/mapbox-gl-geocoder.css" type="text/css" />
+  <link rel="stylesheet" href="./node_modules/@fortawesome/fontawesome-free/css/all.min.css" type="text/css" />
+  <link href="sass/styles.scss" rel="stylesheet" />
+  <!--endbuild-->
+</head>
+<body>
+  <section id="app-container">
+    <section id="user-type-section" class="active">
+      <article class="user-type-container">
+        <div class="">
+          <article class="user-type">
+            <h4>Welcome to the City of Detroit Affordable Housing Map</h4>
+            <p>The map below shows regulated affordable housing in Detroit. You can apply for these units and find out about specific eligibility requirements and availability by contacting the property manager directly.</p>
+            <p><small>Properties may or may not have units available, and rents may vary. Property management contact information is continuously updated, as management may change. If you discover any information is not up to date, please submit a note using our <a href="https://app.smartsheet.com/b/form/1cc29c45f4694a7a97315dde550db40c" target="_blank">online form.</a></small></p>
+            <article class="user-type-btns">
+              <button type="button" name="button" data-btn-type="v-sign-up">START</button>
+            </article>
+          </article>
+        </div>
+      </article>
+    </section>
+    <section id="initial-loader-overlay" class="">
+      <article>
+        <div>
+          <div class="loader">
+            <div class="loader__bar"></div>
+            <div class="loader__bar"></div>
+            <div class="loader__bar"></div>
+            <div class="loader__bar"></div>
+            <div class="loader__bar"></div>
+            <div class="loader__ball"></div>
+          </div>
+          <p>LOADING</p>
+        </div>
+      </article>
+    </section>
+    <section id="alert-overlay" class="">
+      <article>
+        <span class="close">x</span>
+        <div></div>
+      </article>
+    </section>
+    <section id="drill-down-overlay" class="">
+      <article>
+        <span class="close">x</span>
+        <div></div>
+      </article>
+    </section>
+    <section class="application hidden">
+      <section class="data-panel">
+        <button class="close-btn" id="close-panel-btn"><i class="fas fa-angle-left"></i> Back</button>
+        <section class="content-section"></section>
+      </section>
+      <section class="map-panel">
+        <article id="map"></article>
+        <article id="geocoder"></article>
+        <section class="filters">
+          <button id="close-filters-btn" class="close-btn"><i class="fas fa-angle-left"></i> Back</button>
+          <h5>Search for housing</h5>
+          <article>
+            <button id="zipcode-filter-btn" class="filter-btn">x</button>
+            <label for="zipcode">By Zip code:</label>
+            <input id="zipcode" list="zipcodes" class="interactive-filters">
+            <datalist id="zipcodes">
+            </datalist>
+          </article>
+          <article>
+            <button id="population-filter-btn" class="filter-btn">x</button>
+            <label for="population">For Special Populations:</label>
+            <select id="population" class="interactive-filters" aria-describedby="population-description">
+              <option value="null" selected></option>
+              <option value="Elderly">Elderly</option>
+              <option value="Family">Family</option>
+              <option value="Special_Needs_or_Disabled">Special Need or Disabled</option>
+              <option value="Homeless">Homeless</option>
+              <option value="Veterans">Veterans</option>
+            </select>
+            <p id="population-description">(Examples: elderly, veterans, families, etc.)</p>
+          </article>
+          <article>
+            <button id="bedrooms-filter-btn" class="filter-btn">x</button>
+            <label for="rooms">By Number of Bedrooms:</label>
+            <select id="rooms" class="interactive-filters">
+              <option value="null" selected></option>
+              <option value="F0BR">Studio</option>
+              <option value="F1BR">1 - Bedroom</option>
+              <option value="F2BR">2 - Bedrooms</option>
+              <option value="F3BR">3 - Bedrooms</option>
+              <option value="F4BR">4 - Bedrooms</option>
+              <option value="F5BR">5 - Bedrooms</option>
+            </select>
+          </article>
+          <article>
+            <button id="income-filter-btn" class="filter-btn">x</button>
+            <button id="calculator-btn" class="off" aria-describedby="by-income-description">By Income</button>
+            <span id="by-income-description"></span>
+          </article>
+          <!-- <article>
+            <button class="filter-btn">x</button>
+            <button id="filter-reset-btn">Reset</button>
+          </article> -->
+          <article class="legend">
+            <p><span>x</span> Best match for your income</p>
+            <p><span>x</span> May have units affordable for your income</p>
+          </article>
+        </section>
+        <section class="calculator">
+          <h5>Income Calculator</h5>
+          <article id="calc-box"></article>
+        </section>
+        <button id="filters"><i class="fas fa-search"></i> Search for Housing</button>
+      </section>
+    </section>
+  </section>
+  <script src="index.js"></script>
+</body>
+</html>
