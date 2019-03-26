@@ -1,7 +1,7 @@
 'use strict';
 import mapboxgl from 'mapbox-gl';
 var MapboxGeocoder = require('@mapbox/mapbox-gl-geocoder');
-mapboxgl.accessToken = 'pk.eyJ1IjoiY2l0eW9mZGV0cm9pdCIsImEiOiJjajd3MGlodXIwZ3piMnhudmlzazVnNm44In0.BL29_7QRvcnOrVuXX_hD9A';
+mapboxgl.accessToken = 'pk.eyJ1IjoiY2l0eW9mZGV0cm9pdCIsImEiOiJjanRpem1vdncwaTZ0NDRueDR3cnBjYmpsIn0.ex9GPyAbpXHXteQytYiT8Q';
 export default class Map {
   constructor(init) {
     if(init.geocoder){

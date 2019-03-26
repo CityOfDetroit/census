@@ -8,50 +8,50 @@ import Controller from './components/controller.class';
 
   controller.map.map.on('mousemove', function (e, parent = this) {
     let features = this.queryRenderedFeatures(e.point, {
-      layers: ['litch-locations-points']
+      layers: ['census-fill']
     });
-    if (!features.length) {
-      features = this.queryRenderedFeatures(e.point, {
-        layers: ['litch-locations-maybe-points']
-      });
-    }
+    // if (features.length) {
+    //   features = this.queryRenderedFeatures(e.point, {
+    //     layers: ['litch-locations-maybe-points']
+    //   });
+    // }
     this.getCanvas().style.cursor = (features.length) ? 'pointer' : '';
   });
   controller.map.map.on('click', function (e, parent = this) {
     //console.log(e);
     let features = this.queryRenderedFeatures(e.point, {
-      layers: ['litch-locations-points']
+      layers: ['census-fill']
     });
     //console.log(e.point);
     if (features.length) {
-      //console.log(features[0]);
-      controller.updatePanel(features[0], controller);
-      controller.map.map.setFilter('litch-maybe-selected', ['==', 'OBJECTID', '']);
-      controller.map.map.setFilter('litch-selected', ['==', 'OBJECTID', features[0].properties.OBJECTID]);
-      document.querySelector('.data-panel').className = 'data-panel active';
-      (document.querySelector('.filters.active') == null) ? 0 : document.querySelector('.filters.active').className = 'filters';
-      (document.querySelector('.calculator.active') == null) ? 0 : document.querySelector('.calculator.active').className = 'calculator';
+      console.log(features[0]);
+      // controller.updatePanel(features[0], controller);
+      // controller.map.map.setFilter('litch-maybe-selected', ['==', 'OBJECTID', '']);
+      // controller.map.map.setFilter('litch-selected', ['==', 'OBJECTID', features[0].properties.OBJECTID]);
+      // document.querySelector('.data-panel').className = 'data-panel active';
+      // (document.querySelector('.filters.active') == null) ? 0 : document.querySelector('.filters.active').className = 'filters';
+      // (document.querySelector('.calculator.active') == null) ? 0 : document.querySelector('.calculator.active').className = 'calculator';
     }else{
-      features = this.queryRenderedFeatures(e.point, {
-        layers: ['litch-locations-maybe-points']
-      });
-      if (features.length) {
-        //console.log(features[0]);
-        controller.updatePanel(features[0], controller);
-        controller.map.map.setFilter('litch-selected', ['==', 'OBJECTID', '']);
-        controller.map.map.setFilter('litch-maybe-selected', ['==', 'OBJECTID', features[0].properties.OBJECTID]);
-        document.querySelector('.data-panel').className = 'data-panel active';
-        (document.querySelector('.filters.active') == null) ? 0 : document.querySelector('.filters.active').className = 'filters';
-        (document.querySelector('.calculator.active') == null) ? 0 : document.querySelector('.calculator.active').className = 'calculator';
-      }else{
-        //console.log('no featured');
-        controller.map.map.setFilter('litch-selected', ['==', 'OBJECTID', '']);
-        controller.map.map.setFilter('litch-maybe-selected', ['==', 'OBJECTID', '']);
-        controller.panel.clearPanel();
-        (document.querySelector('.data-panel.active') == null) ? 0 : document.querySelector('.data-panel.active').className = 'data-panel';
-        (document.querySelector('.filters.active') == null) ? 0 : document.querySelector('.filters.active').className = 'filters';
-        (document.querySelector('.calculator.active') == null) ? 0 : document.querySelector('.calculator.active').className = 'calculator';
-      }
+      // features = this.queryRenderedFeatures(e.point, {
+      //   layers: ['litch-locations-maybe-points']
+      // });
+      // if (features.length) {
+      //   //console.log(features[0]);
+      //   controller.updatePanel(features[0], controller);
+      //   controller.map.map.setFilter('litch-selected', ['==', 'OBJECTID', '']);
+      //   controller.map.map.setFilter('litch-maybe-selected', ['==', 'OBJECTID', features[0].properties.OBJECTID]);
+      //   document.querySelector('.data-panel').className = 'data-panel active';
+      //   (document.querySelector('.filters.active') == null) ? 0 : document.querySelector('.filters.active').className = 'filters';
+      //   (document.querySelector('.calculator.active') == null) ? 0 : document.querySelector('.calculator.active').className = 'calculator';
+      // }else{
+      //   //console.log('no featured');
+      //   controller.map.map.setFilter('litch-selected', ['==', 'OBJECTID', '']);
+      //   controller.map.map.setFilter('litch-maybe-selected', ['==', 'OBJECTID', '']);
+      //   controller.panel.clearPanel();
+      //   (document.querySelector('.data-panel.active') == null) ? 0 : document.querySelector('.data-panel.active').className = 'data-panel';
+      //   (document.querySelector('.filters.active') == null) ? 0 : document.querySelector('.filters.active').className = 'filters';
+      //   (document.querySelector('.calculator.active') == null) ? 0 : document.querySelector('.calculator.active').className = 'calculator';
+      // }
     }
   });
   // controller.map.geocoder.on('result', function (ev) {

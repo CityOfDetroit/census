@@ -33,17 +33,9 @@ export default class Controller {
       },
       sources: [
         {
-          id: "litch-locations",
-          type: "geojson",
-          data: `https://services2.arcgis.com/qvkbeam7Wirps6zC/arcgis/rest/services/HRD_Website_Data(Website_View)/FeatureServer/0/query?where=1%3D1&objectIds=&time=&geometry=&geometryType=esriGeometryEnvelope&inSR=&spatialRel=esriSpatialRelIntersects&resultType=none&distance=0.0&units=esriSRUnit_Meter&returnGeodetic=false&outFields=*&returnGeometry=true&multipatchOption=xyFootprint&maxAllowableOffset=&geometryPrecision=&outSR=4326&datumTransformation=&applyVCSProjection=false&returnIdsOnly=false&returnUniqueIdsOnly=false&returnCountOnly=false&returnExtentOnly=false&returnDistinctValues=false&orderByFields=&groupByFieldsForStatistics=&outStatistics=&having=&resultOffset=&resultRecordCount=&returnZ=false&returnM=false&returnExceededLimitFeatures=true&quantizationParameters=&sqlFormat=none&f=geojson&token=`
-        },
-        {
-          id: "litch-locations-maybe",
-          type: "geojson",
-          data: {
-            "type": "FeatureCollection",
-            "features": []
-          }
+          id: "census",
+          type: "vector",
+          url: "mapbox://slusarskiddetroitmi.8we0pb2l"
         },
         {
           id: "single-point",
@@ -61,40 +53,49 @@ export default class Controller {
       ],
       layers: [
         {
-          id: "litch-locations-points",
-          "source": "litch-locations",
-          "type": "circle",
+          "id": "census-fill",
+          "type": "fill",
+          "source": "census",
+          "source-layer": "censusgeojson",
+          "layout": {},
+          "maxzoom": 12,
           "paint": {
-              "circle-radius": 10,
-              "circle-color": "#004544"
+            "fill-color": '#9FD5B3',
+            "fill-opacity": 0
           }
         },
         {
-          id: "litch-locations-maybe-points",
-          "source": "litch-locations-maybe",
-          "type": "circle",
+          "id": "census-borders",
+          "type": "line",
+          "source": "census",
+          "source-layer": "censusgeojson",
+          "layout": {},
           "paint": {
-              "circle-radius": 10,
-              "circle-color": "#E48F22"
+            "line-color": "#004544",
+            "line-width": 3
           }
         },
         {
-          id: "litch-selected",
-          "source": "litch-locations",
-          "type": "circle",
+          "id": "census-hover",
+          "type": "fill",
+          "source": "census",
+          "source-layer": "censusgeojson",
+          "layout": {},
           "paint": {
-              "circle-radius": 10,
-              "circle-color": "#007cbf"
+            "fill-color": '#004544',
+            "fill-opacity": .5
           },
           "filter": ["==", "OBJECTID", ""]
         },
         {
-          id: "litch-maybe-selected",
-          "source": "litch-locations-maybe",
-          "type": "circle",
+          "id": "census-featured",
+          "type": "fill",
+          "source": "census",
+          "source-layer": "censusgeojson",
+          "layout": {},
           "paint": {
-              "circle-radius": 10,
-              "circle-color": "#007cbf"
+            "fill-color": '#004544',
+            "fill-opacity": .5
           },
           "filter": ["==", "OBJECTID", ""]
         },
