@@ -6,7 +6,6 @@ const turf = require('@turf/turf');
 const arcGIS = require('terraformer-arcgis-parser');
 export default class Controller {
   constructor(container) {
-    this.scoutVolunteers = null;
     this.filters = {
       'bedrooms': null,
       'zipcode': null,
@@ -22,7 +21,7 @@ export default class Controller {
       geocoder: false,
       zoomControls: true,
       baseLayers: {
-        street: 'streets-v10',
+        street: 'light-v10',
         satellite: 'cj774gftq3bwr2so2y6nqzvz4'
       },
       center: [-83.10, 42.36],
@@ -35,7 +34,7 @@ export default class Controller {
         {
           id: "census",
           type: "vector",
-          url: "mapbox://slusarskiddetroitmi.8we0pb2l"
+          url: "mapbox://styles/slusarskiddetroitmi/cjh0yyy1102xh2rqyvm3ev7lz"
         },
         {
           id: "single-point",
@@ -56,7 +55,7 @@ export default class Controller {
           "id": "census-fill",
           "type": "fill",
           "source": "census",
-          "source-layer": "censusgeojson",
+          "source-layer": "trac",
           "layout": {},
           "maxzoom": 12,
           "paint": {
@@ -68,7 +67,7 @@ export default class Controller {
           "id": "census-borders",
           "type": "line",
           "source": "census",
-          "source-layer": "censusgeojson",
+          "source-layer": "trac",
           "layout": {},
           "paint": {
             "line-color": "#004544",
@@ -79,7 +78,7 @@ export default class Controller {
           "id": "census-hover",
           "type": "fill",
           "source": "census",
-          "source-layer": "censusgeojson",
+          "source-layer": "trac",
           "layout": {},
           "paint": {
             "fill-color": '#004544',
@@ -91,7 +90,7 @@ export default class Controller {
           "id": "census-featured",
           "type": "fill",
           "source": "census",
-          "source-layer": "censusgeojson",
+          "source-layer": "trac",
           "layout": {},
           "paint": {
             "fill-color": '#004544',
