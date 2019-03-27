@@ -11,7 +11,7 @@ import Controller from './components/controller.class';
       layers: ['census-fill']
     });
     if (features.length) {
-      console.log(features[0]);
+      // console.log(features[0]);
       controller.map.map.setFilter('census-hover', ['==', 'geoid', features[0].properties.geoid]);
     }else{
       controller.map.map.setFilter('census-hover', ['==', 'geoid', ""]);
@@ -44,21 +44,20 @@ import Controller from './components/controller.class';
   //     console.log('extra call');
   //   }
   // });
-  document.getElementById('population').value = '';
-  document.getElementById('zipcode').value = '';
-  document.getElementById('rooms').value = '';
+  // document.getElementById('population').value = null;
+  document.getElementById('hardest').value = null;
+  document.getElementById('low-response').value = null;
+  document.getElementById('no-internet').value = null;
   document.getElementById('close-panel-btn').addEventListener('click', function () {
     controller.panel.clearPanel();
-    document.querySelector('.data-panel.active').className = 'data-panel';
+    (document.querySelector('.data-panel.active') != null) ?  document.querySelector('.data-panel.active').className = 'data-panel' : 0;
   });
   document.getElementById('close-filters-btn').addEventListener('click', function () {
     document.querySelector('.filters.active').className = 'filters';
   });
-  document.getElementById('calculator-btn').addEventListener('click', function () {
-    document.querySelector('.calculator').className = 'calculator active';
-  });
   document.getElementById('filters').addEventListener('click', function () {
     document.querySelector('.filters').className = 'filters active';
+    document.querySelector('.filters.active').focus();
   });
   const intFilters = document.querySelectorAll('.interactive-filters');
   intFilters.forEach(function (btn) {

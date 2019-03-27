@@ -66,17 +66,32 @@
         <article id="geocoder"></article>
         <section class="filters">
           <button id="close-filters-btn" class="close-btn"><i class="fas fa-angle-left"></i> Back</button>
-          <h5>Filter the census</h5>
+          <h5>Filter Census Information</h5>
           <article>
-            <button id="zipcode-filter-btn" class="filter-btn">x</button>
-            <label for="zipcode">By Zip code:</label>
-            <input id="zipcode" list="zipcodes" class="interactive-filters">
-            <datalist id="zipcodes">
-            </datalist>
+            <button id="hardest-filter-btn" class="filter-btn">x</button>
+            <label for="hardest">By Hardest to Count:</label>
+            <select id="hardest" class="interactive-filters">
+              <option value="null" selected></option>
+              <option value="73-100">> 73 - 100</option>
+              <option value="70-73">> 70 - 73</option>
+              <option value="65-70">> 65 - 70</option>
+              <option value="60-65">> 60 - 65</option>
+              <option value="20-60">20 - 60</option>
+            </select>
           </article>
           <article>
+            <button id="low-response-filter-btn" class="filter-btn">x</button>
+            <label for="low-response">By Low Response Score:</label>
+            <select id="low-response" class="interactive-filters">
+              <option value="null" selected></option>
+              <option value="32.7+">> 32.7</option>
+              <option value="28.28">28.28 - 32.7</option>
+              <option value="24-">< 24</option>
+            </select>
+          </article>
+          <!-- <article>
             <button id="population-filter-btn" class="filter-btn">x</button>
-            <label for="population">For Special Populations:</label>
+            <label for="population">By Populations:</label>
             <select id="population" class="interactive-filters" aria-describedby="population-description">
               <option value="null" selected></option>
               <option value="Elderly">Elderly</option>
@@ -85,38 +100,19 @@
               <option value="Homeless">Homeless</option>
               <option value="Veterans">Veterans</option>
             </select>
-            <p id="population-description">(Examples: elderly, veterans, families, etc.)</p>
-          </article>
+          </article> -->
           <article>
-            <button id="bedrooms-filter-btn" class="filter-btn">x</button>
-            <label for="rooms">By Number of Bedrooms:</label>
-            <select id="rooms" class="interactive-filters">
+            <button id="no-internet-filter-btn" class="filter-btn">x</button>
+            <label for="no-internet">By % of Homes without Internet:</label>
+            <select id="no-internet" class="interactive-filters">
               <option value="null" selected></option>
-              <option value="F0BR">Studio</option>
-              <option value="F1BR">1 - Bedroom</option>
-              <option value="F2BR">2 - Bedrooms</option>
-              <option value="F3BR">3 - Bedrooms</option>
-              <option value="F4BR">4 - Bedrooms</option>
-              <option value="F5BR">5 - Bedrooms</option>
+              <option value="86+">> 86</option>
+              <option value="60-86">>60 - 86</option>
+              <option value="40-60">>40 - 60</option>
+              <option value="20-40">>20 - 40</option>
+              <option value="0-20">0 - 20</option>
             </select>
           </article>
-          <article>
-            <button id="income-filter-btn" class="filter-btn">x</button>
-            <button id="calculator-btn" class="off" aria-describedby="by-income-description">By Income</button>
-            <span id="by-income-description"></span>
-          </article>
-          <!-- <article>
-            <button class="filter-btn">x</button>
-            <button id="filter-reset-btn">Reset</button>
-          </article> -->
-          <article class="legend">
-            <p><span>x</span> Best match for your income</p>
-            <p><span>x</span> May have units affordable for your income</p>
-          </article>
-        </section>
-        <section class="calculator">
-          <h5>Income Calculator</h5>
-          <article id="calc-box"></article>
         </section>
         <button id="filters"><i class="fas fa-filter"></i> Filter the census</button>
       </section>
