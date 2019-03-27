@@ -34952,7 +34952,7 @@ class Controller {
       sources: [{
         id: "census",
         type: "vector",
-        url: "mapbox://styles/slusarskiddetroitmi/cjh0yyy1102xh2rqyvm3ev7lz"
+        url: "mapbox://slusarskiddetroitmi.8we0pb2l"
       }, {
         id: "single-point",
         type: "geojson",
@@ -34971,10 +34971,9 @@ class Controller {
         "source": "census",
         "source-layer": "Census-arxzum",
         "layout": {},
-        "maxzoom": 12,
         "paint": {
           "fill-color": '#9FD5B3',
-          "fill-opacity": 0
+          "fill-opacity": .1
         }
       }, {
         "id": "census-borders",
@@ -34990,24 +34989,24 @@ class Controller {
         "id": "census-hover",
         "type": "fill",
         "source": "census",
-        "source-layer": "trac",
+        "source-layer": "Census-arxzum",
         "layout": {},
         "paint": {
           "fill-color": '#004544',
           "fill-opacity": .5
         },
-        "filter": ["==", "OBJECTID", ""]
+        "filter": ["==", "geoid", ""]
       }, {
         "id": "census-featured",
         "type": "fill",
         "source": "census",
-        "source-layer": "trac",
+        "source-layer": "Census-arxzum",
         "layout": {},
         "paint": {
           "fill-color": '#004544',
           "fill-opacity": .5
         },
-        "filter": ["==", "OBJECTID", ""]
+        "filter": ["==", "geoid", ""]
       }, {
         id: "point",
         "source": "single-point",
@@ -35320,55 +35319,56 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
   let throttled = false; // are we currently throttled?
 
-  controller.map.map.on('mousemove', function (e) {// let features = this.queryRenderedFeatures(e.point, {
-    //   layers: ['census-fill']
-    // });
-    // if (features.length) {
-    //   features = this.queryRenderedFeatures(e.point, {
-    //     layers: ['litch-locations-maybe-points']
-    //   });
-    // }
-    // this.getCanvas().style.cursor = (features.length) ? 'pointer' : '';
-
+  controller.map.map.on('mousemove', function (e) {
     let parent = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : this;
+    let features = this.queryRenderedFeatures(e.point, {
+      layers: ['census-fill']
+    });
+
+    if (features.length) {
+      console.log(features[0]);
+      controller.map.map.setFilter('census-hover', ['==', 'geoid', features[0].properties.geoid]);
+    } else {
+      controller.map.map.setFilter('census-hover', ['==', 'geoid', ""]);
+    }
+
+    this.getCanvas().style.cursor = features.length ? 'pointer' : '';
   });
-  controller.map.map.on('click', function (e) {//console.log(e);
-    // let features = this.queryRenderedFeatures(e.point, {
-    //   layers: ['census-fill']
-    // });
-    //console.log(e.point);
-    // if (features.length) {
-    // console.log(features[0]);
-    // controller.updatePanel(features[0], controller);
-    // controller.map.map.setFilter('litch-maybe-selected', ['==', 'OBJECTID', '']);
-    // controller.map.map.setFilter('litch-selected', ['==', 'OBJECTID', features[0].properties.OBJECTID]);
-    // document.querySelector('.data-panel').className = 'data-panel active';
-    // (document.querySelector('.filters.active') == null) ? 0 : document.querySelector('.filters.active').className = 'filters';
-    // (document.querySelector('.calculator.active') == null) ? 0 : document.querySelector('.calculator.active').className = 'calculator';
-    // }else{
-    // features = this.queryRenderedFeatures(e.point, {
-    //   layers: ['litch-locations-maybe-points']
-    // });
-    // if (features.length) {
-    //   //console.log(features[0]);
-    //   controller.updatePanel(features[0], controller);
-    //   controller.map.map.setFilter('litch-selected', ['==', 'OBJECTID', '']);
-    //   controller.map.map.setFilter('litch-maybe-selected', ['==', 'OBJECTID', features[0].properties.OBJECTID]);
-    //   document.querySelector('.data-panel').className = 'data-panel active';
-    //   (document.querySelector('.filters.active') == null) ? 0 : document.querySelector('.filters.active').className = 'filters';
-    //   (document.querySelector('.calculator.active') == null) ? 0 : document.querySelector('.calculator.active').className = 'calculator';
-    // }else{
-    //   //console.log('no featured');
-    //   controller.map.map.setFilter('litch-selected', ['==', 'OBJECTID', '']);
-    //   controller.map.map.setFilter('litch-maybe-selected', ['==', 'OBJECTID', '']);
-    //   controller.panel.clearPanel();
-    //   (document.querySelector('.data-panel.active') == null) ? 0 : document.querySelector('.data-panel.active').className = 'data-panel';
-    //   (document.querySelector('.filters.active') == null) ? 0 : document.querySelector('.filters.active').className = 'filters';
-    //   (document.querySelector('.calculator.active') == null) ? 0 : document.querySelector('.calculator.active').className = 'calculator';
-    // }
-    // }
-
+  controller.map.map.on('click', function (e) {
     let parent = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : this;
+    //console.log(e);
+    let features = this.queryRenderedFeatures(e.point, {
+      layers: ['census-fill']
+    }); //console.log(e.point);
+
+    if (features.length) {
+      console.log(features[0]); // controller.updatePanel(features[0], controller);
+      // controller.map.map.setFilter('litch-maybe-selected', ['==', 'OBJECTID', '']);
+      // controller.map.map.setFilter('litch-selected', ['==', 'OBJECTID', features[0].properties.OBJECTID]);
+      // document.querySelector('.data-panel').className = 'data-panel active';
+      // (document.querySelector('.filters.active') == null) ? 0 : document.querySelector('.filters.active').className = 'filters';
+      // (document.querySelector('.calculator.active') == null) ? 0 : document.querySelector('.calculator.active').className = 'calculator';
+    } else {// features = this.queryRenderedFeatures(e.point, {
+        //   layers: ['litch-locations-maybe-points']
+        // });
+        // if (features.length) {
+        //   //console.log(features[0]);
+        //   controller.updatePanel(features[0], controller);
+        //   controller.map.map.setFilter('litch-selected', ['==', 'OBJECTID', '']);
+        //   controller.map.map.setFilter('litch-maybe-selected', ['==', 'OBJECTID', features[0].properties.OBJECTID]);
+        //   document.querySelector('.data-panel').className = 'data-panel active';
+        //   (document.querySelector('.filters.active') == null) ? 0 : document.querySelector('.filters.active').className = 'filters';
+        //   (document.querySelector('.calculator.active') == null) ? 0 : document.querySelector('.calculator.active').className = 'calculator';
+        // }else{
+        //   //console.log('no featured');
+        //   controller.map.map.setFilter('litch-selected', ['==', 'OBJECTID', '']);
+        //   controller.map.map.setFilter('litch-maybe-selected', ['==', 'OBJECTID', '']);
+        //   controller.panel.clearPanel();
+        //   (document.querySelector('.data-panel.active') == null) ? 0 : document.querySelector('.data-panel.active').className = 'data-panel';
+        //   (document.querySelector('.filters.active') == null) ? 0 : document.querySelector('.filters.active').className = 'filters';
+        //   (document.querySelector('.calculator.active') == null) ? 0 : document.querySelector('.calculator.active').className = 'calculator';
+        // }
+      }
   }); // controller.map.geocoder.on('result', function (ev) {
   //   // console.log(ev);
   //   if(controller.geocoderOff){
@@ -35456,7 +35456,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "59488" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "62970" + '/');
 
   ws.onmessage = function (event) {
     var data = JSON.parse(event.data);

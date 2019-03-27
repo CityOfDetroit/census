@@ -34,7 +34,7 @@ export default class Controller {
         {
           id: "census",
           type: "vector",
-          url: "mapbox://styles/slusarskiddetroitmi/cjh0yyy1102xh2rqyvm3ev7lz"
+          url: "mapbox://slusarskiddetroitmi.8we0pb2l"
         },
         {
           id: "single-point",
@@ -57,10 +57,9 @@ export default class Controller {
           "source": "census",
           "source-layer": "Census-arxzum",
           "layout": {},
-          "maxzoom": 12,
           "paint": {
             "fill-color": '#9FD5B3',
-            "fill-opacity": 0
+            "fill-opacity": .1
           }
         },
         {
@@ -78,25 +77,25 @@ export default class Controller {
           "id": "census-hover",
           "type": "fill",
           "source": "census",
-          "source-layer": "trac",
+          "source-layer": "Census-arxzum",
           "layout": {},
           "paint": {
             "fill-color": '#004544',
             "fill-opacity": .5
           },
-          "filter": ["==", "OBJECTID", ""]
+          "filter": ["==", "geoid", ""]
         },
         {
           "id": "census-featured",
           "type": "fill",
           "source": "census",
-          "source-layer": "trac",
+          "source-layer": "Census-arxzum",
           "layout": {},
           "paint": {
             "fill-color": '#004544',
             "fill-opacity": .5
           },
-          "filter": ["==", "OBJECTID", ""]
+          "filter": ["==", "geoid", ""]
         },
         {
           id: "point",
