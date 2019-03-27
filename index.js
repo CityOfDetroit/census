@@ -7,31 +7,31 @@ import Controller from './components/controller.class';
   let throttled = false; // are we currently throttled?
 
   controller.map.map.on('mousemove', function (e, parent = this) {
-    let features = this.queryRenderedFeatures(e.point, {
-      layers: ['census-fill']
-    });
+    // let features = this.queryRenderedFeatures(e.point, {
+    //   layers: ['census-fill']
+    // });
     // if (features.length) {
     //   features = this.queryRenderedFeatures(e.point, {
     //     layers: ['litch-locations-maybe-points']
     //   });
     // }
-    this.getCanvas().style.cursor = (features.length) ? 'pointer' : '';
+    // this.getCanvas().style.cursor = (features.length) ? 'pointer' : '';
   });
   controller.map.map.on('click', function (e, parent = this) {
     //console.log(e);
-    let features = this.queryRenderedFeatures(e.point, {
-      layers: ['census-fill']
-    });
+    // let features = this.queryRenderedFeatures(e.point, {
+    //   layers: ['census-fill']
+    // });
     //console.log(e.point);
-    if (features.length) {
-      console.log(features[0]);
+    // if (features.length) {
+      // console.log(features[0]);
       // controller.updatePanel(features[0], controller);
       // controller.map.map.setFilter('litch-maybe-selected', ['==', 'OBJECTID', '']);
       // controller.map.map.setFilter('litch-selected', ['==', 'OBJECTID', features[0].properties.OBJECTID]);
       // document.querySelector('.data-panel').className = 'data-panel active';
       // (document.querySelector('.filters.active') == null) ? 0 : document.querySelector('.filters.active').className = 'filters';
       // (document.querySelector('.calculator.active') == null) ? 0 : document.querySelector('.calculator.active').className = 'calculator';
-    }else{
+    // }else{
       // features = this.queryRenderedFeatures(e.point, {
       //   layers: ['litch-locations-maybe-points']
       // });
@@ -52,7 +52,7 @@ import Controller from './components/controller.class';
       //   (document.querySelector('.filters.active') == null) ? 0 : document.querySelector('.filters.active').className = 'filters';
       //   (document.querySelector('.calculator.active') == null) ? 0 : document.querySelector('.calculator.active').className = 'calculator';
       // }
-    }
+    // }
   });
   // controller.map.geocoder.on('result', function (ev) {
   //   // console.log(ev);

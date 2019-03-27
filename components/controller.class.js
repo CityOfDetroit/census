@@ -55,7 +55,7 @@ export default class Controller {
           "id": "census-fill",
           "type": "fill",
           "source": "census",
-          "source-layer": "trac",
+          "source-layer": "Census-arxzum",
           "layout": {},
           "maxzoom": 12,
           "paint": {
@@ -67,7 +67,7 @@ export default class Controller {
           "id": "census-borders",
           "type": "line",
           "source": "census",
-          "source-layer": "trac",
+          "source-layer": "Census-arxzum",
           "layout": {},
           "paint": {
             "line-color": "#004544",
