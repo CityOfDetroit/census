@@ -2,8 +2,8 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>LITCH | City of Detroit</title>
-  <meta name="description" content="Application to help track citizen radio patrols in the City of Detroit">
+  <title>Census Tracks | City of Detroit</title>
+  <meta name="description" content="Application to help understands the census tracks within City of Detroit">
   <meta name="author" content="Edgar Montes">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0" />
   <!--build:css css/styles.min.css-->
@@ -20,9 +20,8 @@
       <article class="user-type-container">
         <div class="">
           <article class="user-type">
-            <h4>Welcome to the City of Detroit Affordable Housing Map</h4>
-            <p>The map below shows regulated affordable housing in Detroit. You can apply for these units and find out about specific eligibility requirements and availability by contacting the property manager directly.</p>
-            <p><small>Properties may or may not have units available, and rents may vary. Property management contact information is continuously updated, as management may change. If you discover any information is not up to date, please submit a note using our <a href="https://app.smartsheet.com/b/form/1cc29c45f4694a7a97315dde550db40c" target="_blank">online form.</a></small></p>
+            <h4>Welcome to the City of Detroit Census Map</h4>
+            <p>The map will help you understand the complexity of the census.</p>
             <article class="user-type-btns">
               <button type="button" name="button" data-btn-type="v-sign-up">START</button>
             </article>
@@ -67,7 +66,7 @@
         <article id="geocoder"></article>
         <section class="filters">
           <button id="close-filters-btn" class="close-btn"><i class="fas fa-angle-left"></i> Back</button>
-          <h5>Search for housing</h5>
+          <h5>Filter the census</h5>
           <article>
             <button id="zipcode-filter-btn" class="filter-btn">x</button>
             <label for="zipcode">By Zip code:</label>
@@ -119,7 +118,7 @@
           <h5>Income Calculator</h5>
           <article id="calc-box"></article>
         </section>
-        <button id="filters"><i class="fas fa-search"></i> Search for Housing</button>
+        <button id="filters"><i class="fas fa-filter"></i> Filter the census</button>
       </section>
     </section>
   </section>

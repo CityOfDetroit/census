@@ -23,36 +23,16 @@ import Controller from './components/controller.class';
     let features = this.queryRenderedFeatures(e.point, {
       layers: ['census-fill']
     });
-    //console.log(e.point);
     if (features.length) {
       console.log(features[0]);
-      // controller.updatePanel(features[0], controller);
-      // controller.map.map.setFilter('litch-maybe-selected', ['==', 'OBJECTID', '']);
-      // controller.map.map.setFilter('litch-selected', ['==', 'OBJECTID', features[0].properties.OBJECTID]);
-      // document.querySelector('.data-panel').className = 'data-panel active';
-      // (document.querySelector('.filters.active') == null) ? 0 : document.querySelector('.filters.active').className = 'filters';
-      // (document.querySelector('.calculator.active') == null) ? 0 : document.querySelector('.calculator.active').className = 'calculator';
+      controller.updatePanel(features[0], controller);
+      controller.map.map.setFilter('census-featured', ['==', 'geoid', '']);
+      controller.map.map.setFilter('census-featured', ['==', 'geoid', features[0].properties.geoid]);
+      document.querySelector('.data-panel').className = 'data-panel active';
     }else{
-      // features = this.queryRenderedFeatures(e.point, {
-      //   layers: ['litch-locations-maybe-points']
-      // });
-      // if (features.length) {
-      //   //console.log(features[0]);
-      //   controller.updatePanel(features[0], controller);
-      //   controller.map.map.setFilter('litch-selected', ['==', 'OBJECTID', '']);
-      //   controller.map.map.setFilter('litch-maybe-selected', ['==', 'OBJECTID', features[0].properties.OBJECTID]);
-      //   document.querySelector('.data-panel').className = 'data-panel active';
-      //   (document.querySelector('.filters.active') == null) ? 0 : document.querySelector('.filters.active').className = 'filters';
-      //   (document.querySelector('.calculator.active') == null) ? 0 : document.querySelector('.calculator.active').className = 'calculator';
-      // }else{
-      //   //console.log('no featured');
-      //   controller.map.map.setFilter('litch-selected', ['==', 'OBJECTID', '']);
-      //   controller.map.map.setFilter('litch-maybe-selected', ['==', 'OBJECTID', '']);
-      //   controller.panel.clearPanel();
-      //   (document.querySelector('.data-panel.active') == null) ? 0 : document.querySelector('.data-panel.active').className = 'data-panel';
-      //   (document.querySelector('.filters.active') == null) ? 0 : document.querySelector('.filters.active').className = 'filters';
-      //   (document.querySelector('.calculator.active') == null) ? 0 : document.querySelector('.calculator.active').className = 'calculator';
-      // }
+      console.log('no featured');
+      controller.map.map.setFilter('census-featured', ['==', 'geoid', '']);
+      controller.panel.clearPanel();
     }
   });
   // controller.map.geocoder.on('result', function (ev) {
@@ -80,9 +60,6 @@ import Controller from './components/controller.class';
   document.getElementById('filters').addEventListener('click', function () {
     document.querySelector('.filters').className = 'filters active';
   });
-  // document.getElementById('filter-reset-btn').addEventListener('click', function (ev) {
-  //   controller.filterMap(ev, controller);
-  // });
   const intFilters = document.querySelectorAll('.interactive-filters');
   intFilters.forEach(function (btn) {
     btn.addEventListener('change', function (ev) {

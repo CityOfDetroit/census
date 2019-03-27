@@ -1,7 +1,6 @@
 'use strict';
 import Map from './map.class.js';
 import Panel from './panel.class.js';
-import Calculator from './calculator.class';
 const turf = require('@turf/turf');
 const arcGIS = require('terraformer-arcgis-parser');
 export default class Controller {
@@ -14,7 +13,6 @@ export default class Controller {
       'incomeBucket': null
     };
     this.zipcodes = {};
-    this.calculator = new Calculator('calc-box',this);
     this.map = new Map({
       styleURL: 'mapbox://styles/mapbox',
       mapContainer: 'map',
@@ -59,7 +57,7 @@ export default class Controller {
           "layout": {},
           "paint": {
             "fill-color": '#9FD5B3',
-            "fill-opacity": .1
+            "fill-opacity": .2
           }
         },
         {
@@ -81,7 +79,7 @@ export default class Controller {
           "layout": {},
           "paint": {
             "fill-color": '#004544',
-            "fill-opacity": .5
+            "fill-opacity": .4
           },
           "filter": ["==", "geoid", ""]
         },
@@ -93,7 +91,7 @@ export default class Controller {
           "layout": {},
           "paint": {
             "fill-color": '#004544',
-            "fill-opacity": .5
+            "fill-opacity": .6
           },
           "filter": ["==", "geoid", ""]
         },
