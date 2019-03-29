@@ -17,41 +17,30 @@ export default class Panel {
             <h5>${data.properties.namelsad}</h5>
             <section class="group">
             <span class="header">Internet</span>
-            <p><strong>Internet P:</strong> ${data.properties.internet_p}</p>
-            <p><strong>Internet S:</strong> ${data.properties.internet_s}</p>
-            <p><strong>broadband_:</strong> ${data.properties.broadband_}</p>
-            <p><strong>no_access:</strong> ${data.properties.no_access}</p>
-            <p><strong>no_access_:</strong> ${data.properties.no_access_}</p>
-            <p><strong>no_interne:</strong> ${data.properties.no_interne}</p>
+            <p><strong>% of Internet Subscriptions:</strong> ${data.properties.internet_p}%</p>
+            <p><strong>% of No Internet Access:</strong> ${data.properties.no_access_}%</p>
+            <p><strong># of No Internet Access:</strong> ${data.properties.no_interne}</p>
             </section>
             <section class="group">
             <span class="header">Population</span>
-            <p><strong>Total Population:</strong> ${data.properties.total_pop_}</p>
-            <p><strong>Total Black:</strong> ${data.properties.total_blac}</p>
-            <p><strong>black_alon:</strong> ${data.properties.black_alon}</p>
-            <p><strong>hispanic_a:</strong> ${data.properties.hispanic_a}</p>
-            <p><strong>hispanic_c:</strong> ${data.properties.hispanic_c}</p>
-            <p><strong>households:</strong> ${data.properties.households}</p>
-            <p><strong>housing_un:</strong> ${data.properties.housing_un}</p>
-            <p><strong>pop_under_:</strong> ${data.properties.pop_under_}</p>
-            <p><strong>statefp:</strong> ${data.properties.statefp}</p>
-            <p><strong>total_popu:</strong> ${data.properties.total_popu}</p>
+            <p><strong>Househods:</strong> ${data.properties.households}</p>
+            <p><strong>Housing Units:</strong> ${data.properties.housing_un}</p>
+            <p><strong>Total Population:</strong> ${data.properties.total_popu}</p>
+            <p><strong>Total Population under 5:</strong> ${data.properties.pop_under_}</p>
+            </section>
+            <section class="group">
+            <span class="header">Race and Hispanic Origin</span>
+            <p><strong># of Black or African American alone:</strong> ${data.properties.total_blac}</p>
+            <p><strong>% of Black or African American alone:</strong> ${data.properties.black_alon}%</p>
+            <p><strong>Hispanic Population 2010 census:</strong> ${data.properties.hispanic_c}</p>
+            <p><strong>Hispanic Population 2012-2017 ACS 5 year estimate:</strong> ${data.properties.hispanic_a}</p>
             </section>
             <section class="group">
             <span class="header">Location</span>
-            <p><strong>aland:</strong> ${data.properties.aland}</p>
-            <p><strong>awater:</strong> ${data.properties.awater}</p>
-            <p><strong>census_mai:</strong> ${data.properties.census_mai}</p>
-            <p><strong>council_di:</strong> ${data.properties.council_di}</p>
-            <p><strong>countyfp:</strong> ${data.properties.countyfp}</p>
-            <p><strong>funcstat:</strong> ${data.properties.funcstat}</p>
-            <p><strong>geoid:</strong> ${data.properties.geoid}</p>
-            <p><strong>gid:</strong> ${data.properties.gid}</p>
-            <p><strong>low_respon:</strong> ${data.properties.low_respon}</p>
-            <p><strong>mrr:</strong> ${data.properties.mrr}</p>
-            <p><strong>mtfcc:</strong> ${data.properties.mtfcc}</p>
+            <p><strong>Council District:</strong> ${data.properties.council_di}</p>
+            <p><strong>Low Response Score:</strong> ${data.properties.low_respon}</p>
+            <p><strong>Hardest to Count(Mail Return Rate 2010):</strong> ${data.properties.mrr}</p>
             <p><strong>Neighborhood:</strong> ${data.properties.neighborho}</p>
-            <p><strong>valid_mail:</strong> ${data.properties.valid_mail}</p>
             <p><strong>Zip Codes:</strong> ${data.properties.zipcodes}</p>
             </section>
             <section class="group">
