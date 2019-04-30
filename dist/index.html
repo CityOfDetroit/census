@@ -1,1 +1,119 @@
-<!DOCTYPE html><html> <head> <meta charset="utf-8"> <title>Census Tracks | City of Detroit</title> <meta name="description" content="Application to help understands the census tracks within City of Detroit"> <meta name="author" content="Edgar Montes"> <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">  <link rel="shortcut icon" type="image/png" href="favicon.61b2b4ba.ico"> <link href="mapbox-gl.5c3883b6.css" rel="stylesheet"> <link rel="stylesheet" href="mapbox-gl-geocoder.d13fbab6.css" type="text/css"> <link rel="stylesheet" href="all.min.72ac8574.css" type="text/css"> <link href="styles.6d1e6216.css" rel="stylesheet">  </head> <body> <section id="app-container"> <section id="user-type-section" class="active"> <article class="user-type-container"> <div> <article class="user-type"> <h4>Welcome to the City of Detroit Census Map</h4> <p>The map will help you understand the complexity of the census.</p> <article class="user-type-btns"> <button type="button" name="button" data-btn-type="v-sign-up">START</button> </article> </article> </div> </article> </section> <section id="initial-loader-overlay"> <article> <div> <div class="loader"> <div class="loader__bar"></div> <div class="loader__bar"></div> <div class="loader__bar"></div> <div class="loader__bar"></div> <div class="loader__bar"></div> <div class="loader__ball"></div> </div> <p>LOADING</p> </div> </article> </section> <section id="alert-overlay"> <article> <span class="close">x</span> <div></div> </article> </section> <section id="drill-down-overlay"> <article> <span class="close">x</span> <div></div> </article> </section> <section class="application hidden"> <section class="data-panel"> <button class="close-btn" id="close-panel-btn"><i class="fas fa-angle-left"></i> Back</button> <section class="content-section"></section> </section> <section class="map-panel"> <article id="map"></article> <article id="geocoder"></article> <section class="filters"> <button id="close-filters-btn" class="close-btn"><i class="fas fa-angle-left"></i> Back</button> <h5>Filter Census Information</h5> <article> <button id="hardest-filter-btn" class="filter-btn">x</button> <label for="hardest">By Hardest to Count:</label> <select id="hardest" class="interactive-filters"> <option value="null" selected></option> <option value="73-100">> 73 - 100</option> <option value="70-73">> 70 - 73</option> <option value="65-70">> 65 - 70</option> <option value="60-65">> 60 - 65</option> <option value="20-60">20 - 60</option> </select> </article> <article> <button id="low-response-filter-btn" class="filter-btn">x</button> <label for="low-response">By Low Response Score:</label> <select id="low-response" class="interactive-filters"> <option value="null" selected></option> <option value="32.7+">> 32.7</option> <option value="28.28">28.28 - 32.7</option> <option value="24">24 - 28.28</option> <option value="24-">< 24</option> </select> </article>  <article> <button id="no-internet-filter-btn" class="filter-btn">x</button> <label for="no-internet">By % of Homes without Internet:</label> <select id="no-internet" class="interactive-filters"> <option value="null" selected></option> <option value="86+">> 86</option> <option value="60-86">>60 - 86</option> <option value="40-60">>40 - 60</option> <option value="20-40">>20 - 40</option> <option value="0-20">0 - 20</option> </select> </article> </section> <button id="filters"><i class="fas fa-filter"></i> Filter the census</button> </section> </section> </section> <script src="census.4d3d8034.js"></script> </body> </html>
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Census Tracks | City of Detroit</title>
+  <meta name="description" content="Application to help understands the census tracks within City of Detroit">
+  <meta name="author" content="Edgar Montes">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+  <!--build:css css/styles.min.css-->
+  <link rel="shortcut icon" type="image/png" href="/favicon.fc7b9a6e.ico">
+  <link href="/mapbox-gl.d48860d6.css" rel="stylesheet">
+  <link rel="stylesheet" href="/mapbox-gl-geocoder.0bed1700.css" type="text/css">
+  <link rel="stylesheet" href="/all.min.d92a794a.css" type="text/css">
+  <link href="/styles.8206c151.css" rel="stylesheet">
+  <!--endbuild-->
+<script src="/mapbox-gl.d48860d6.js"></script><script src="/mapbox-gl-geocoder.0bed1700.js"></script><script src="/all.min.d92a794a.js"></script><script src="/styles.8206c151.js"></script></head>
+<body>
+  <section id="app-container">
+    <section id="user-type-section" class="active">
+      <article class="user-type-container">
+        <div class="">
+          <article class="user-type">
+            <h4>Welcome to the City of Detroit Census Map</h4>
+            <p>The map will help you understand the complexity of the census.</p>
+            <article class="user-type-btns">
+              <button type="button" name="button" data-btn-type="v-sign-up">START</button>
+            </article>
+          </article>
+        </div>
+      </article>
+    </section>
+    <section id="initial-loader-overlay" class="">
+      <article>
+        <div>
+          <div class="loader">
+            <div class="loader__bar"></div>
+            <div class="loader__bar"></div>
+            <div class="loader__bar"></div>
+            <div class="loader__bar"></div>
+            <div class="loader__bar"></div>
+            <div class="loader__ball"></div>
+          </div>
+          <p>LOADING</p>
+        </div>
+      </article>
+    </section>
+    <section id="alert-overlay" class="">
+      <article>
+        <span class="close">x</span>
+        <div></div>
+      </article>
+    </section>
+    <section id="drill-down-overlay" class="">
+      <article>
+        <span class="close">x</span>
+        <div></div>
+      </article>
+    </section>
+    <section class="application hidden">
+      <section class="data-panel">
+        <button class="close-btn" id="close-panel-btn"><i class="fas fa-angle-left"></i> Back</button>
+        <section class="content-section"></section>
+      </section>
+      <section class="map-panel">
+        <article id="map"></article>
+        <article id="geocoder"></article>
+        <section class="filters">
+          <button id="close-filters-btn" class="close-btn"><i class="fas fa-angle-left"></i> Back</button>
+          <h5>Filter Census Information</h5>
+          <article>
+            <button id="hardest-filter-btn" class="filter-btn">x</button>
+            <label for="hardest">By Hardest to Count:</label>
+            <select id="hardest" class="interactive-filters">
+              <option value="null" selected=""></option>
+              <option value="73-100">> 73 - 100</option>
+              <option value="70-73">> 70 - 73</option>
+              <option value="65-70">> 65 - 70</option>
+              <option value="60-65">> 60 - 65</option>
+              <option value="20-60">20 - 60</option>
+            </select>
+          </article>
+          <article>
+            <button id="low-response-filter-btn" class="filter-btn">x</button>
+            <label for="low-response">By Non-response Score:</label>
+            <select id="low-response" class="interactive-filters">
+              <option value="null" selected=""></option>
+              <option value="28+">Greater than 28%</option>
+              <option value="28-">Less than 28%</option>
+            </select>
+          </article>
+          <article>
+              <button id="population-filter-btn" class="filter-btn">x</button>
+              <label for="population">By Population:</label>
+              <select id="population" class="interactive-filters">
+                <option value="null" selected=""></option>
+                <option value="1500">Over 1,500</option>
+                <option value="2000">Over 2,000</option>
+              </select>
+            </article>
+          <article>
+            <button id="no-internet-filter-btn" class="filter-btn">x</button>
+            <label for="no-internet">By % of Homes without Internet:</label>
+            <select id="no-internet" class="interactive-filters">
+              <option value="null" selected=""></option>
+              <option value="86+">> 86</option>
+              <option value="60-86">>60 - 86</option>
+              <option value="40-60">>40 - 60</option>
+              <option value="20-40">>20 - 40</option>
+              <option value="0-20">0 - 20</option>
+            </select>
+          </article>
+        </section>
+        <button id="filters"><i class="fas fa-filter"></i> Filter the census</button>
+      </section>
+    </section>
+  </section>
+  <script src="/census.e31bb0bc.js"></script>
+</body>
+</html>

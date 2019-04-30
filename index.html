@@ -81,27 +81,22 @@
           </article>
           <article>
             <button id="low-response-filter-btn" class="filter-btn">x</button>
-            <label for="low-response">By Low Response Score:</label>
+            <label for="low-response">By Non-response Score:</label>
             <select id="low-response" class="interactive-filters">
               <option value="null" selected></option>
-              <option value="32.7+">> 32.7</option>
-              <option value="28.28">28.28 - 32.7</option>
-              <option value="24">24 - 28.28</option>
-              <option value="24-">< 24</option>
+              <option value="28+">Greater than 28%</option>
+              <option value="28-">Less than 28%</option>
             </select>
           </article>
-          <!-- <article>
-            <button id="population-filter-btn" class="filter-btn">x</button>
-            <label for="population">By Populations:</label>
-            <select id="population" class="interactive-filters" aria-describedby="population-description">
-              <option value="null" selected></option>
-              <option value="Elderly">Elderly</option>
-              <option value="Family">Family</option>
-              <option value="Special_Needs_or_Disabled">Special Need or Disabled</option>
-              <option value="Homeless">Homeless</option>
-              <option value="Veterans">Veterans</option>
-            </select>
-          </article> -->
+          <article>
+              <button id="population-filter-btn" class="filter-btn">x</button>
+              <label for="population">By Population:</label>
+              <select id="population" class="interactive-filters">
+                <option value="null" selected></option>
+                <option value="1500">Over 1,500</option>
+                <option value="2000">Over 2,000</option>
+              </select>
+            </article>
           <article>
             <button id="no-internet-filter-btn" class="filter-btn">x</button>
             <label for="no-internet">By % of Homes without Internet:</label>

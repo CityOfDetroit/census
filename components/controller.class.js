@@ -149,6 +149,12 @@ export default class Controller {
         document.getElementById('low-response').value = null;
         document.getElementById('low-response-filter-btn').className = 'filter-btn';
         break;
+      
+      case 'population-filter-btn':
+        _controller.filters.population = null;
+        document.getElementById('population').value = null;
+        document.getElementById('population-filter-btn').className = 'filter-btn';
+        break;
 
       case 'no-internet-filter-btn':
         _controller.filters.noInternet = null;
@@ -197,22 +203,32 @@ export default class Controller {
       case null:
         break;
 
-      case '32.7+':
-        filter.push([">=", "low_respon", 32.7]);
+      case '28+':
+        filter.push([">=", "low_respon", 28]);
         break;
 
-      case '28.28':
-        filter.push([">=", "low_respon", 28.28]);
-        filter.push(["<", "low_respon", 32.7]);
-        break; 
-
-      case '24':
-        filter.push([">=", "low_respon", 24]);
-        filter.push(["<", "low_respon", 28.28]);
+      case '28-':
+        filter.push(["<", "low_respon", 28]);
         break; 
         
       default:
-        filter.push(["<", "low_respon", 24]);
+        // filter.push(["<", "low_respon", 24]);
+      break;
+    }
+    switch(_controller.filters.population){
+      case null:
+        break;
+
+      case '1500':
+        filter.push([">=", "total_pop_", 1500]);
+        break;
+
+      case '2000':
+        filter.push(["<", "total_pop_", 2000]);
+        break; 
+        
+      default:
+        // filter.push(["<", "low_respon", 24]);
       break;
     }
     switch (_controller.filters.noInternet) {
@@ -270,6 +286,15 @@ export default class Controller {
         }
         break;
 
+      case 'population':
+        if(ev.target.value != ''){
+          document.getElementById('population-filter-btn').className = 'filter-btn active';
+          _controller.filters.population = ev.target.value
+        }else{
+          _controller.filters.population = null;
+        }
+        break;
+
       case 'no-internet':
         if(ev.target.value != 'null'){
           document.getElementById('no-internet-filter-btn').className = 'filter-btn active';
@@ -285,6 +310,7 @@ export default class Controller {
         _controller.filters.noInternet = null;
         document.getElementById('hardest').value = null;
         document.getElementById('low-response').value = null;
+        document.getElementById('population').value = null;
         document.getElementById('no-internet').value = null;
         let activeFilters = document.querySelectorAll('.filter-btn.active');
         activeFilters.forEach((btn)=>{

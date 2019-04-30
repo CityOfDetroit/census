@@ -19,7 +19,7 @@ import Controller from './components/controller.class';
     this.getCanvas().style.cursor = (features.length) ? 'pointer' : '';
   });
   controller.map.map.on('click', function (e, parent = this) {
-    //console.log(e);
+    // console.log(e);
     let features = this.queryRenderedFeatures(e.point, {
       layers: ['census-fill']
     });
@@ -47,6 +47,7 @@ import Controller from './components/controller.class';
   // document.getElementById('population').value = null;
   document.getElementById('hardest').value = null;
   document.getElementById('low-response').value = null;
+  document.getElementById('population').value = null;
   document.getElementById('no-internet').value = null;
   document.getElementById('close-panel-btn').addEventListener('click', function () {
     controller.panel.clearPanel();
