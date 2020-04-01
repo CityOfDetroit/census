@@ -1,10 +1,9 @@
 'use strict';
 import Map from './map.class.js';
 import Panel from './panel.class.js';
-const turf = require('@turf/turf');
-const arcGIS = require('terraformer-arcgis-parser');
 export default class Controller {
   constructor(container) {
+    this.tracData = {},
     this.filters = {
       'hardest': null,
       'lowResponse': null,
@@ -42,12 +41,22 @@ export default class Controller {
           }
         },
         {
-          id: "city",
+          id: "2020-response",
           type: "geojson",
-          data: `https://services2.arcgis.com/qvkbeam7Wirps6zC/arcgis/rest/services/City_of_Detroit_Boundaries/FeatureServer/0/query?where=1%3D1&objectIds=&time=&geometry=&geometryType=esriGeometryEnvelope&inSR=&spatialRel=esriSpatialRelIntersects&resultType=none&distance=0.0&units=esriSRUnit_Meter&returnGeodetic=false&outFields=*&returnGeometry=true&returnCentroid=false&multipatchOption=xyFootprint&maxAllowableOffset=&geometryPrecision=&outSR=4326&datumTransformation=&applyVCSProjection=false&returnIdsOnly=false&returnCountOnly=false&returnExtentOnly=false&returnDistinctValues=false&orderByFields=&groupByFieldsForStatistics=&outStatistics=&having=&resultOffset=&resultRecordCount=&returnZ=false&returnM=false&returnExceededLimitFeatures=true&quantizationParameters=&sqlFormat=none&f=geojson&token=`
+          data: "https://services2.arcgis.com/qvkbeam7Wirps6zC/arcgis/rest/services/Detroit_Census_Response_Rate_by_Tract/FeatureServer/0/query?where=1%3D1&objectIds=&time=&geometry=&geometryType=esriGeometryEnvelope&inSR=&spatialRel=esriSpatialRelIntersects&resultType=none&distance=0.0&units=esriSRUnit_Meter&returnGeodetic=false&outFields=*&returnHiddenFields=false&returnGeometry=true&returnCentroid=false&featureEncoding=esriDefault&multipatchOption=xyFootprint&maxAllowableOffset=&geometryPrecision=&outSR=4326&datumTransformation=&applyVCSProjection=false&returnIdsOnly=false&returnUniqueIdsOnly=false&returnCountOnly=false&returnExtentOnly=false&returnQueryGeometry=false&returnDistinctValues=false&cacheHint=false&orderByFields=&groupByFieldsForStatistics=&outStatistics=&having=&resultOffset=&resultRecordCount=&returnZ=false&returnM=false&returnExceededLimitFeatures=true&quantizationParameters=&sqlFormat=none&f=pgeojson"
         }
       ],
       layers: [
+        {
+          "id": "2020-response",
+          "type": "fill",
+          "source": "2020-response",
+          "layout": {},
+          "paint": {
+            "fill-color": '#9FD5B3',
+            "fill-opacity": 0
+          }
+        },
         {
           "id": "census-fill",
           "type": "fill",
@@ -102,16 +111,6 @@ export default class Controller {
               "circle-radius": 10,
               "circle-color": "#007cbf"
           }
-        },
-        {
-          "id": "city",
-          "type": "line",
-          "source": "city",
-          "layout": {},
-          "paint": {
-            "line-color": "#004544",
-            "line-width": 3
-          }
         }
       ]
     });
@@ -131,7 +130,8 @@ export default class Controller {
   }
 
   updatePanel(ev, _controller){
-    this.panel.buildPanel(ev);
+    console.log(ev);
+    this.panel.buildPanel(ev.info2010, ev.info2020);
   }
 
   removeFilter(ev, _controller){

@@ -20,14 +20,21 @@ import Controller from './components/controller.class';
   });
   controller.map.map.on('click', function (e, parent = this) {
     // console.log(e);
-    let features = this.queryRenderedFeatures(e.point, {
+    let features2010 = this.queryRenderedFeatures(e.point, {
       layers: ['census-fill']
     });
-    if (features.length) {
-      console.log(features[0]);
-      controller.updatePanel(features[0], controller);
+    if (features2010.length) {
+      console.log(features2010[0]);
+      let data = {};
+      data.info2010 = features2010[0];
       controller.map.map.setFilter('census-featured', ['==', 'geoid', '']);
-      controller.map.map.setFilter('census-featured', ['==', 'geoid', features[0].properties.geoid]);
+      controller.map.map.setFilter('census-featured', ['==', 'geoid', features2010[0].properties.geoid]);
+      let features2020 = this.queryRenderedFeatures(e.point, {
+        layers: ['2020-response']
+      });
+      console.log(features2020[0]);
+      data.info2020 = features2020[0];
+      controller.updatePanel(data, controller);
       document.querySelector('.data-panel').className = 'data-panel active';
     }else{
       console.log('no featured');

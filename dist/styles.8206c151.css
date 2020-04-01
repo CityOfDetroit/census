@@ -525,6 +525,26 @@ section.application .data-panel.active .group .sub-group .btn.resource:hover {
   text-decoration: none;
   transition: all 0.2s ease-in-out;
 }
+section.application .data-panel.active .response-rates {
+  display: flex;
+}
+section.application .data-panel.active .response-rates div {
+  display: flex;
+  flex: 1;
+  padding: 0.5em 1em;
+  background-color: #004544;
+  color: #fff;
+}
+section.application .data-panel.active .response-rates div span {
+  margin: auto;
+  text-align: center;
+}
+section.application .data-panel.active .response-rates div:nth-child(1) {
+  margin: 0 1em 1em 0;
+}
+section.application .data-panel.active .response-rates div:nth-child(2) {
+  margin: 0 0 1em 1em;
+}
 section.application .data-panel {
   background-color: #eaeaea;
   z-index: 5;
