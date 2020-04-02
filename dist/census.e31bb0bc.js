@@ -31261,6 +31261,9 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
   document.getElementById('low-response').value = null;
   document.getElementById('population').value = null;
   document.getElementById('no-internet').value = null;
+  document.querySelector('.sc-gauge button').addEventListener('click', function () {
+    document.querySelector('.sc-gauge.active').className = 'sc-gauge';
+  });
   document.getElementById('close-panel-btn').addEventListener('click', function () {
     controller.panel.clearPanel();
     document.querySelector('.data-panel.active') != null ? document.querySelector('.data-panel.active').className = 'data-panel' : 0;
@@ -31331,7 +31334,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "54145" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "61704" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
