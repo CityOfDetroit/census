@@ -4,17 +4,21 @@ export default class Panel {
         this.container = container;
     }
 
-    buildPanel(data){
-        this.container.innerHTML = this.buildMarkUp(data);
+    buildPanel(data, data2020){
+        this.container.innerHTML = this.buildMarkUp(data, data2020);
     }
 
     clearPanel(){
         this.container.innerHTML = '';
     }
 
-    buildMarkUp(data){
+    buildMarkUp(data, data2020){
         let html = `
             <h5>${data.properties.namelsad}</h5>
+            <section class="response-rates">
+            <div><span><strong>2010 RESPONSE RATE</strong><br>${parseInt(data.properties.low_respon)}%</span></div>
+            <div><span><strong>2020 RESPONSE RATE</strong><br>${(data2020 != undefined)? `${parseInt(data2020.properties.CRRALL)}%` : `No Data` }</span></div>
+            </section>
             <section class="group">
             <span class="header">Internet</span>
             <p><strong>% of Internet Subscriptions:</strong> ${parseInt(data.properties.internet_p)}%</p>
@@ -38,7 +42,6 @@ export default class Panel {
             <section class="group">
             <span class="header">Location</span>
             <p><strong>Council District:</strong> ${data.properties.council_di}</p>
-            <p><strong>Low Response Score:</strong> ${parseInt(data.properties.low_respon)}%</p>
             <p><strong>Hardest to Count(Mail Return Rate 2010):</strong> ${parseInt(data.properties.mrr)}%</p>
             <p><strong>Neighborhood:</strong> ${data.properties.neighborho}</p>
             <p><strong>Zip Codes:</strong> ${data.properties.zipcodes}</p>

@@ -305,6 +305,72 @@ form #cancel-btn {
   position: relative;
   overflow: hidden;
 }
+#app-container .sc-gauge {
+  display: none;
+}
+#app-container .sc-gauge.active {
+  display: block;
+  position: absolute;
+  z-index: 5;
+  width: 12em;
+  padding: 1em;
+  background-color: #004544;
+  color: #fff;
+}
+#app-container .sc-gauge.active button {
+  position: absolute;
+  right: 0.5em;
+  top: 0.5em;
+  padding: 0.45em 0.8em 0.6em 0.8em;
+  background-color: #CF3234;
+  color: #fff;
+}
+#app-container .sc-gauge.active .sc-background {
+  position: relative;
+  height: 100px;
+  margin-bottom: 10px;
+  background-color: #fff;
+  border-radius: 150px 150px 0 0;
+  overflow: hidden;
+  text-align: center;
+}
+#app-container .sc-gauge.active .sc-mask {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  left: 20px;
+  height: 80px;
+  background-color: #004544;
+  border-radius: 150px 150px 0 0;
+}
+#app-container .sc-gauge.active .sc-percentage {
+  position: absolute;
+  top: 100px;
+  left: -200%;
+  width: 400%;
+  height: 400%;
+  margin-left: 100px;
+  background-color: #9fd5b3;
+}
+#app-container .sc-gauge.active .sc-percentage {
+  transform: rotate(0deg);
+  transform-origin: top center;
+  transition: all 1s ease-in-out;
+}
+#app-container .sc-gauge.active .sc-min {
+  float: left;
+}
+#app-container .sc-gauge.active .sc-max {
+  float: right;
+}
+#app-container .sc-gauge.active .sc-value {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 100%;
+  font-size: 48px;
+  font-weight: 700;
+}
 
 #alert-overlay, #drill-down-overlay, #initial-loader-overlay {
   display: none;
@@ -524,6 +590,26 @@ section.application .data-panel.active .group .sub-group .btn.resource:hover {
   color: #9fd5b3;
   text-decoration: none;
   transition: all 0.2s ease-in-out;
+}
+section.application .data-panel.active .response-rates {
+  display: flex;
+}
+section.application .data-panel.active .response-rates div {
+  display: flex;
+  flex: 1;
+  padding: 0.5em 1em;
+  background-color: #004544;
+  color: #fff;
+}
+section.application .data-panel.active .response-rates div span {
+  margin: auto;
+  text-align: center;
+}
+section.application .data-panel.active .response-rates div:nth-child(1) {
+  margin: 0 1em 1em 0;
+}
+section.application .data-panel.active .response-rates div:nth-child(2) {
+  margin: 0 0 1em 1em;
 }
 section.application .data-panel {
   background-color: #eaeaea;

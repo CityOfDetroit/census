@@ -1,39 +1,46 @@
 {
-  "name": "LITCH",
+  "name": "census",
   "version": "1.0.0",
-  "description": "Application to help find affordable housing in the City of Detroit.",
+  "description": "Information about census tracks and hardest to count areas.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "parcel index.html --https --no-cache --no-source-maps -p 3000",
+    "test": "./node_modules/.bin/cypress open",
+    "build": "parcel build index.js --no-cache --public-url '.' --no-source-maps -d build"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/CityOfDetroit/radio-patrols.git"
+    "url": "git+https://github.com/CityOfDetroit/census.git"
   },
   "keywords": [
-    "Affordable",
-    "Housing",
-    "HUD",
-    "LITCH"
+    "Census",
+    "Tracks",
+    "Self-respose-rate",
+    "Detroit",
+    "Population"
   ],
   "author": "Edgar Montes",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/CityOfDetroit/LITCH-.git"
+    "url": "https://github.com/CityOfDetroit/census.git"
   },
-  "homepage": "https://github.com/CityOfDetroit/LITCH-#readme",
+  "homepage": "https://github.com/CityOfDetroit/census#readme",
   "dependencies": {
-    "@mapbox/mapbox-gl-geocoder": "^2.3.0",
+    "@mapbox/mapbox-gl-geocoder": "^4.5.0",
     "@turf/simplify": "^5.1.5",
     "@turf/turf": "^5.1.6",
-    "mapbox-gl": "^0.53.0",
+    "mapbox-gl": "^1.9.1",
     "terraformer-arcgis-parser": "^1.1.0"
   },
   "devDependencies": {
-    "@fortawesome/fontawesome-free": "^5.7.2",
-    "babel-core": "^6.26.3",
+    "@babel/core": "^7.9.0",
+    "@babel/plugin-proposal-class-properties": "^7.8.3",
+    "@babel/preset-env": "^7.9.5",
+    "@babel/preset-react": "^7.9.4",
+    "@fortawesome/fontawesome-free": "^5.13.0",
     "babel-preset-env": "^1.7.0",
     "cssnano": "^4.1.10",
-    "sass": "^1.17.3"
+    "cypress": "^4.3.0",
+    "sass": "^1.26.3"
   }
 }

@@ -1,5 +1,6 @@
 import Controller from './components/controller.class';
-
+import './node_modules/mapbox-gl/dist/mapbox-gl.css';
+import './sass/styles.scss';
 (function start() {
   
   const controller = new Controller(document.querySelector('.content-section'));
@@ -11,7 +12,6 @@ import Controller from './components/controller.class';
       layers: ['census-fill']
     });
     if (features.length) {
-      // console.log(features[0]);
       controller.map.map.setFilter('census-hover', ['==', 'geoid', features[0].properties.geoid]);
     }else{
       controller.map.map.setFilter('census-hover', ['==', 'geoid', ""]);
@@ -19,36 +19,33 @@ import Controller from './components/controller.class';
     this.getCanvas().style.cursor = (features.length) ? 'pointer' : '';
   });
   controller.map.map.on('click', function (e, parent = this) {
-    // console.log(e);
-    let features = this.queryRenderedFeatures(e.point, {
+    let features2010 = this.queryRenderedFeatures(e.point, {
       layers: ['census-fill']
     });
-    if (features.length) {
-      console.log(features[0]);
-      controller.updatePanel(features[0], controller);
+    if (features2010.length) {
+      (document.querySelector('.sc-gauge.active')) ? document.querySelector('.sc-gauge.active').className = 'sc-gauge' : 0;
+      let data = {};
+      data.info2010 = features2010[0];
       controller.map.map.setFilter('census-featured', ['==', 'geoid', '']);
-      controller.map.map.setFilter('census-featured', ['==', 'geoid', features[0].properties.geoid]);
+      controller.map.map.setFilter('census-featured', ['==', 'geoid', features2010[0].properties.geoid]);
+      let features2020 = this.queryRenderedFeatures(e.point, {
+        layers: ['2020-response']
+      });
+      data.info2020 = features2020[0];
+      controller.updatePanel(data, controller);
       document.querySelector('.data-panel').className = 'data-panel active';
     }else{
-      console.log('no featured');
       controller.map.map.setFilter('census-featured', ['==', 'geoid', '']);
       controller.panel.clearPanel();
     }
   });
-  // controller.map.geocoder.on('result', function (ev) {
-  //   // console.log(ev);
-  //   if(controller.geocoderOff){
-  //     controller.geocoderOff = false;
-  //     controller.geoResults(ev, controller);
-  //   }else{
-  //     console.log('extra call');
-  //   }
-  // });
-  // document.getElementById('population').value = null;
   document.getElementById('hardest').value = null;
   document.getElementById('low-response').value = null;
   document.getElementById('population').value = null;
   document.getElementById('no-internet').value = null;
+  document.querySelector('.sc-gauge button').addEventListener('click', function () {
+    document.querySelector('.sc-gauge.active').className = 'sc-gauge';
+  });
   document.getElementById('close-panel-btn').addEventListener('click', function () {
     controller.panel.clearPanel();
     (document.querySelector('.data-panel.active') != null) ?  document.querySelector('.data-panel.active').className = 'data-panel' : 0;
