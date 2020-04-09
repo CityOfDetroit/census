@@ -5,7 +5,6 @@ export default class Panel {
     }
 
     buildPanel(data, data2020){
-        console.log(data2020);
         this.container.innerHTML = this.buildMarkUp(data, data2020);
     }
 

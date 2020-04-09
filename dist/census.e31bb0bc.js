@@ -30799,7 +30799,6 @@ class Panel {
   }
 
   buildPanel(data, data2020) {
-    console.log(data2020);
     this.container.innerHTML = this.buildMarkUp(data, data2020);
   }
 
@@ -30931,6 +30930,7 @@ class Controller {
       }]
     });
     this.panel = new _panelClass.default(container);
+    this.startGauge();
   }
 
   initialForm(ev, _controller) {
@@ -30947,13 +30947,24 @@ class Controller {
     }
   }
 
+  startGauge() {
+    fetch("https://services2.arcgis.com/qvkbeam7Wirps6zC/arcgis/rest/services/Detroit_Census_Response_Rate_by_Tract/FeatureServer/0/query?where=1%3D1&objectIds=&time=&geometry=&geometryType=esriGeometryEnvelope&inSR=&spatialRel=esriSpatialRelIntersects&resultType=none&distance=0.0&units=esriSRUnit_Meter&returnGeodetic=false&outFields=CRRALL&returnGeometry=false&returnCentroid=false&featureEncoding=esriDefault&multipatchOption=xyFootprint&maxAllowableOffset=&geometryPrecision=&outSR=&datumTransformation=&applyVCSProjection=false&returnIdsOnly=false&returnUniqueIdsOnly=false&returnCountOnly=false&returnExtentOnly=false&returnQueryGeometry=false&returnDistinctValues=false&cacheHint=false&orderByFields=&groupByFieldsForStatistics=&outStatistics=&having=&resultOffset=&resultRecordCount=&returnZ=false&returnM=false&returnExceededLimitFeatures=true&quantizationParameters=&sqlFormat=none&f=pjson&token=").then(resp => resp.json()).then(function (data) {
+      let total = 0;
+      data.features.forEach(track => {
+        total += track.attributes.CRRALL;
+      });
+      total = parseInt(total / data.features.length);
+      document.querySelector('.sc-value').innerHTML = total + '%';
+      let percent = total / 75 * 180;
+      document.querySelector('.sc-percentage').style.transform = "rotate(".concat(percent, "deg)");
+    });
+  }
+
   updatePanel(ev, _controller) {
-    console.log(ev);
     this.panel.buildPanel(ev.info2010, ev.info2020);
   }
 
   removeFilter(ev, _controller) {
-    //console.log(ev);
     document.getElementById('initial-loader-overlay').className = 'active';
 
     switch (ev.target.id) {
@@ -30990,7 +31001,6 @@ class Controller {
 
   updateMap(_controller) {
     let filter = ['all'];
-    console.log(_controller.filters);
 
     switch (_controller.filters.hardest) {
       case null:
@@ -31092,7 +31102,6 @@ class Controller {
   }
 
   filterMap(ev, _controller) {
-    //console.log(ev);
     document.getElementById('initial-loader-overlay').className = 'active';
 
     switch (ev.target.id) {
@@ -31213,7 +31222,6 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
     });
 
     if (features.length) {
-      // console.log(features[0]);
       controller.map.map.setFilter('census-hover', ['==', 'geoid', features[0].properties.geoid]);
     } else {
       controller.map.map.setFilter('census-hover', ['==', 'geoid', ""]);
@@ -31223,13 +31231,12 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
   });
   controller.map.map.on('click', function (e) {
     let parent = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : this;
-    // console.log(e);
     let features2010 = this.queryRenderedFeatures(e.point, {
       layers: ['census-fill']
     });
 
     if (features2010.length) {
-      console.log(features2010[0]);
+      document.querySelector('.sc-gauge.active') ? document.querySelector('.sc-gauge.active').className = 'sc-gauge' : 0;
       let data = {};
       data.info2010 = features2010[0];
       controller.map.map.setFilter('census-featured', ['==', 'geoid', '']);
@@ -31237,26 +31244,14 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
       let features2020 = this.queryRenderedFeatures(e.point, {
         layers: ['2020-response']
       });
-      console.log(features2020[0]);
       data.info2020 = features2020[0];
       controller.updatePanel(data, controller);
       document.querySelector('.data-panel').className = 'data-panel active';
     } else {
-      console.log('no featured');
       controller.map.map.setFilter('census-featured', ['==', 'geoid', '']);
       controller.panel.clearPanel();
     }
-  }); // controller.map.geocoder.on('result', function (ev) {
-  //   // console.log(ev);
-  //   if(controller.geocoderOff){
-  //     controller.geocoderOff = false;
-  //     controller.geoResults(ev, controller);
-  //   }else{
-  //     console.log('extra call');
-  //   }
-  // });
-  // document.getElementById('population').value = null;
-
+  });
   document.getElementById('hardest').value = null;
   document.getElementById('low-response').value = null;
   document.getElementById('population').value = null;
@@ -31334,7 +31329,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "61704" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "52212" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

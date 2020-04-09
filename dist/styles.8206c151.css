@@ -353,8 +353,9 @@ form #cancel-btn {
   background-color: #9fd5b3;
 }
 #app-container .sc-gauge.active .sc-percentage {
-  transform: rotate(158deg);
+  transform: rotate(0deg);
   transform-origin: top center;
+  transition: all 1s ease-in-out;
 }
 #app-container .sc-gauge.active .sc-min {
   float: left;

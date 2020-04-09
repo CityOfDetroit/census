@@ -115,6 +115,7 @@ export default class Controller {
       ]
     });
     this.panel = new Panel(container);
+    this.startGauge();
   }
   
   initialForm(ev,_controller){
@@ -129,13 +130,26 @@ export default class Controller {
     }
   }
 
+  startGauge(){
+    fetch(`https://services2.arcgis.com/qvkbeam7Wirps6zC/arcgis/rest/services/Detroit_Census_Response_Rate_by_Tract/FeatureServer/0/query?where=1%3D1&objectIds=&time=&geometry=&geometryType=esriGeometryEnvelope&inSR=&spatialRel=esriSpatialRelIntersects&resultType=none&distance=0.0&units=esriSRUnit_Meter&returnGeodetic=false&outFields=CRRALL&returnGeometry=false&returnCentroid=false&featureEncoding=esriDefault&multipatchOption=xyFootprint&maxAllowableOffset=&geometryPrecision=&outSR=&datumTransformation=&applyVCSProjection=false&returnIdsOnly=false&returnUniqueIdsOnly=false&returnCountOnly=false&returnExtentOnly=false&returnQueryGeometry=false&returnDistinctValues=false&cacheHint=false&orderByFields=&groupByFieldsForStatistics=&outStatistics=&having=&resultOffset=&resultRecordCount=&returnZ=false&returnM=false&returnExceededLimitFeatures=true&quantizationParameters=&sqlFormat=none&f=pjson&token=`)
+    .then((resp) => resp.json())
+    .then(function (data) {
+      let total = 0;
+      data.features.forEach((track) => {
+        total += track.attributes.CRRALL;
+      });
+      total = parseInt(total/data.features.length);
+      document.querySelector('.sc-value').innerHTML = total + '%';
+      let percent = (total/75) * 180;
+      document.querySelector('.sc-percentage').style.transform = `rotate(${percent}deg)`;
+    });
+  }
+
   updatePanel(ev, _controller){
-    console.log(ev);
     this.panel.buildPanel(ev.info2010, ev.info2020);
   }
 
   removeFilter(ev, _controller){
-    //console.log(ev);
     document.getElementById('initial-loader-overlay').className = 'active';
     switch (ev.target.id) {
       case 'hardest-filter-btn':
@@ -170,7 +184,6 @@ export default class Controller {
 
   updateMap(_controller){
     let filter = ['all'];
-    console.log(_controller.filters);
     switch(_controller.filters.hardest){
       case null:
         break;
@@ -265,7 +278,6 @@ export default class Controller {
   }
 
   filterMap(ev, _controller){
-    //console.log(ev);
     document.getElementById('initial-loader-overlay').className = 'active';
     switch (ev.target.id) {
       case 'hardest':
