@@ -7,7 +7,7 @@ This project was created using:
  - [Mapbox](https://docs.mapbox.com/mapbox-gl-js/api/) for WebGL maps.
  - [Parcel](https://parceljs.org/) as a web application bundler.
  - [Cypress](https://www.cypress.io/) for testing.
- - [NPM](https://www.npmjs.com/) and [Yarn](https://yarnpkg.com/en/) for 3rd party library use and management.
+ - [NPM](https://www.npmjs.com/) for 3rd party library use and management.
 
 Please make sure these are installed locally
 
