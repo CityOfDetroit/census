@@ -1,5 +1,6 @@
 import Controller from './components/controller.class';
-
+import './node_modules/mapbox-gl/dist/mapbox-gl.css';
+import './sass/styles.scss';
 (function start() {
   
   const controller = new Controller(document.querySelector('.content-section'));
