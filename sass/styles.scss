@@ -62,7 +62,7 @@ $lg: new-breakpoint(min-width 1024px);
 			position: absolute;
 			right: .5em;
 			top: .5em;
-			padding: .45em .8em .6em .8em;
+			padding: .3em .6em .35em .6em;
 			background-color: $color-4;
 			color: $white;
 		}
@@ -96,20 +96,20 @@ $lg: new-breakpoint(min-width 1024px);
 			transition: all 1s ease-in-out;}
 		.sc-title{
 			position: absolute;
-			bottom: 1.5em;
-			width: 60%;
-			font-size: .8em;
-			left: 3.5em;
+			bottom: 1.6em;
+			width: 65%;
+			font-size: .7em;
+			left: 3.7em;
 		}
 		.sc-min { float:left; }
 		.sc-max { float:right; }
 		.sc-value { 
-			position:absolute; 
-			top:50%; 
-			left:0; 
-			width:100%;  
-			font-size:48px; 
-			font-weight:700 }
+			position: absolute;
+			top: 40%;
+			left: 0;
+			width: 100%;
+			font-size: 40px;
+			font-weight: 700; }
 	}
 }
 #alert-overlay, #drill-down-overlay, #initial-loader-overlay{
