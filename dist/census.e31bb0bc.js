@@ -30421,14 +30421,9 @@ class Controller {
   }
 
   startGauge() {
-    fetch("https://services2.arcgis.com/qvkbeam7Wirps6zC/arcgis/rest/services/Detroit_Census_Response_Rate_by_Tract/FeatureServer/0/query?where=1%3D1&objectIds=&time=&geometry=&geometryType=esriGeometryEnvelope&inSR=&spatialRel=esriSpatialRelIntersects&resultType=none&distance=0.0&units=esriSRUnit_Meter&returnGeodetic=false&outFields=CRRALL&returnGeometry=false&returnCentroid=false&featureEncoding=esriDefault&multipatchOption=xyFootprint&maxAllowableOffset=&geometryPrecision=&outSR=&datumTransformation=&applyVCSProjection=false&returnIdsOnly=false&returnUniqueIdsOnly=false&returnCountOnly=false&returnExtentOnly=false&returnQueryGeometry=false&returnDistinctValues=false&cacheHint=false&orderByFields=&groupByFieldsForStatistics=&outStatistics=&having=&resultOffset=&resultRecordCount=&returnZ=false&returnM=false&returnExceededLimitFeatures=true&quantizationParameters=&sqlFormat=none&f=pjson&token=").then(resp => resp.json()).then(function (data) {
-      let total = 0;
-      data.features.forEach(track => {
-        total += track.attributes.CRRALL;
-      });
-      total = parseInt(total / data.features.length);
-      document.querySelector('.sc-value').innerHTML = total + '%';
-      let percent = total / 75 * 180;
+    fetch("https://api.census.gov/data/2020/dec/responserate?get=DRRALL,CRRALL,DRRINT,CRRINT,RESP_DATE,GEO_ID&for=place%3A22000&in=state%3A26").then(resp => resp.json()).then(function (data) {
+      document.querySelector('.sc-value').innerHTML = data[1][1] + '%';
+      let percent = parseInt(data[1][1]) / 75 * 180;
       document.querySelector('.sc-percentage').style.transform = "rotate(".concat(percent, "deg)");
     });
   }
@@ -30883,7 +30878,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "60842" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "56521" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
