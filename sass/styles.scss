@@ -7,7 +7,7 @@ $cubic: cubic-bezier(.64,.09,.08,1);
 $color-1: #004544;
 $color-2: #9fd5b3;
 $color-3: #E48F22;
-$color-4: #CF3234;
+$color-4: #cb4d4f;
 $color-5: #444;
 $white: #fff;
 // $color-1: #004544;
@@ -52,6 +52,8 @@ $lg: new-breakpoint(min-width 1024px);
 	.sc-gauge.active  { 
 		display: block;
 		position: absolute;
+		top: .5em;
+		left: .5em;
 		z-index: 5;
 		width:12em; 
 		padding: 1em;
@@ -561,10 +563,72 @@ section.application {
 		}
 
 		#filters{
+			display: none;
 			position: absolute;
 			top: .5em;
 			right: 3em;
 			font-size: 1.25em;
+			border: solid .1em $color-1;
+		}
+
+		#legend{
+			position: absolute;
+			padding: .25em;
+			bottom: .5em;
+			left: .5em;
+			z-index: 5;
+			width: 25em;
+			max-width: calc(100% - 1em);
+			background: $white;
+
+			p{
+				margin: 0;
+			}
+
+			.legend-colors, .legend-labels{
+				display: flex;
+
+				.legend-item{
+					flex:1;
+					text-align: center;
+				}
+			}
+
+			.legend-colors{
+				.legend-item{
+					height: 1em;
+				}
+
+				.rate-low{
+					background-color: $color-4;
+					opacity: .6;
+				}
+
+				.rate-20{
+					background-color: $color-3;
+					opacity: .6;
+				}
+
+				.rate-30{
+					background-color: $color-2;
+					opacity: .6;
+				}
+
+				.rate-40{
+					background-color: $color-2;
+					opacity: 1;
+				}
+
+				.rate-50{
+					background-color: $color-1;
+					opacity: .6;
+				}
+
+				.rate-60{
+					background-color: $color-1;
+					opacity: .8;
+				}
+			}
 		}
 	}
 }

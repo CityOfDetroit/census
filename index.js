@@ -9,12 +9,12 @@ import './sass/styles.scss';
 
   controller.map.map.on('mousemove', function (e, parent = this) {
     let features = this.queryRenderedFeatures(e.point, {
-      layers: ['census-fill']
+      layers: ['2020-response']
     });
     if (features.length) {
-      controller.map.map.setFilter('census-hover', ['==', 'geoid', features[0].properties.geoid]);
+      controller.map.map.setFilter('census-hover', ['==', 'ObjectId', features[0].properties.ObjectId]);
     }else{
-      controller.map.map.setFilter('census-hover', ['==', 'geoid', ""]);
+      controller.map.map.setFilter('census-hover', ['==', 'ObjectId', ""]);
     }
     this.getCanvas().style.cursor = (features.length) ? 'pointer' : '';
   });

@@ -43,7 +43,37 @@ export default class Controller {
         {
           id: "2020-response",
           type: "geojson",
-          data: "https://services2.arcgis.com/qvkbeam7Wirps6zC/arcgis/rest/services/Detroit_Census_Response_Rate_by_Tract/FeatureServer/0/query?where=1%3D1&objectIds=&time=&geometry=&geometryType=esriGeometryEnvelope&inSR=&spatialRel=esriSpatialRelIntersects&resultType=none&distance=0.0&units=esriSRUnit_Meter&returnGeodetic=false&outFields=*&returnHiddenFields=false&returnGeometry=true&returnCentroid=false&featureEncoding=esriDefault&multipatchOption=xyFootprint&maxAllowableOffset=&geometryPrecision=&outSR=4326&datumTransformation=&applyVCSProjection=false&returnIdsOnly=false&returnUniqueIdsOnly=false&returnCountOnly=false&returnExtentOnly=false&returnQueryGeometry=false&returnDistinctValues=false&cacheHint=false&orderByFields=&groupByFieldsForStatistics=&outStatistics=&having=&resultOffset=&resultRecordCount=&returnZ=false&returnM=false&returnExceededLimitFeatures=true&quantizationParameters=&sqlFormat=none&f=pgeojson"
+          data: "https://services2.arcgis.com/qvkbeam7Wirps6zC/arcgis/rest/services/Detroit_Census_Response_Rate_by_Tract/FeatureServer/0/query?where=tract+%3E+500098+AND+tract+%3C+550000&objectIds=&time=&geometry=&geometryType=esriGeometryEnvelope&inSR=&spatialRel=esriSpatialRelIntersects&resultType=none&distance=0.0&units=esriSRUnit_Meter&returnGeodetic=false&outFields=*&returnGeometry=true&returnCentroid=false&featureEncoding=esriDefault&multipatchOption=xyFootprint&maxAllowableOffset=&geometryPrecision=&outSR=&datumTransformation=&applyVCSProjection=false&returnIdsOnly=false&returnUniqueIdsOnly=false&returnCountOnly=false&returnExtentOnly=false&returnQueryGeometry=false&returnDistinctValues=false&cacheHint=false&orderByFields=&groupByFieldsForStatistics=&outStatistics=&having=&resultOffset=&resultRecordCount=&returnZ=false&returnM=false&returnExceededLimitFeatures=true&quantizationParameters=&sqlFormat=none&f=pgeojson&token="
+        },
+        {
+          id: "2020-response-low",
+          type: "geojson",
+          data: "https://services2.arcgis.com/qvkbeam7Wirps6zC/arcgis/rest/services/Detroit_Census_Response_Rate_by_Tract/FeatureServer/0/query?where=tract+%3E+500098+AND+tract+%3C+550000+AND+CRRALL+%3C+20&objectIds=&time=&geometry=&geometryType=esriGeometryEnvelope&inSR=&spatialRel=esriSpatialRelIntersects&resultType=none&distance=0.0&units=esriSRUnit_Meter&returnGeodetic=false&outFields=*&returnGeometry=true&returnCentroid=false&featureEncoding=esriDefault&multipatchOption=xyFootprint&maxAllowableOffset=&geometryPrecision=&outSR=&datumTransformation=&applyVCSProjection=false&returnIdsOnly=false&returnUniqueIdsOnly=false&returnCountOnly=false&returnExtentOnly=false&returnQueryGeometry=false&returnDistinctValues=false&cacheHint=false&orderByFields=&groupByFieldsForStatistics=&outStatistics=&having=&resultOffset=&resultRecordCount=&returnZ=false&returnM=false&returnExceededLimitFeatures=true&quantizationParameters=&sqlFormat=none&f=pgeojson&token="
+        },
+        {
+          id: "2020-response-20",
+          type: "geojson",
+          data: "https://services2.arcgis.com/qvkbeam7Wirps6zC/arcgis/rest/services/Detroit_Census_Response_Rate_by_Tract/FeatureServer/0/query?where=tract+%3E+500098+AND+tract+%3C+550000+AND+CRRALL+%3E+20+AND+CRRALL+%3C+30&objectIds=&time=&geometry=&geometryType=esriGeometryEnvelope&inSR=&spatialRel=esriSpatialRelIntersects&resultType=none&distance=0.0&units=esriSRUnit_Meter&returnGeodetic=false&outFields=*&returnGeometry=true&returnCentroid=false&featureEncoding=esriDefault&multipatchOption=xyFootprint&maxAllowableOffset=&geometryPrecision=&outSR=&datumTransformation=&applyVCSProjection=false&returnIdsOnly=false&returnUniqueIdsOnly=false&returnCountOnly=false&returnExtentOnly=false&returnQueryGeometry=false&returnDistinctValues=false&cacheHint=false&orderByFields=&groupByFieldsForStatistics=&outStatistics=&having=&resultOffset=&resultRecordCount=&returnZ=false&returnM=false&returnExceededLimitFeatures=true&quantizationParameters=&sqlFormat=none&f=pgeojson&token="
+        },
+        {
+          id: "2020-response-30",
+          type: "geojson",
+          data: "https://services2.arcgis.com/qvkbeam7Wirps6zC/arcgis/rest/services/Detroit_Census_Response_Rate_by_Tract/FeatureServer/0/query?where=tract+%3E+500098+AND+tract+%3C+550000+AND+CRRALL+%3E+30+AND+CRRALL+%3C+40&objectIds=&time=&geometry=&geometryType=esriGeometryEnvelope&inSR=&spatialRel=esriSpatialRelIntersects&resultType=none&distance=0.0&units=esriSRUnit_Meter&returnGeodetic=false&outFields=*&returnGeometry=true&returnCentroid=false&featureEncoding=esriDefault&multipatchOption=xyFootprint&maxAllowableOffset=&geometryPrecision=&outSR=&datumTransformation=&applyVCSProjection=false&returnIdsOnly=false&returnUniqueIdsOnly=false&returnCountOnly=false&returnExtentOnly=false&returnQueryGeometry=false&returnDistinctValues=false&cacheHint=false&orderByFields=&groupByFieldsForStatistics=&outStatistics=&having=&resultOffset=&resultRecordCount=&returnZ=false&returnM=false&returnExceededLimitFeatures=true&quantizationParameters=&sqlFormat=none&f=pgeojson&token="
+        },
+        {
+          id: "2020-response-40",
+          type: "geojson",
+          data: "https://services2.arcgis.com/qvkbeam7Wirps6zC/arcgis/rest/services/Detroit_Census_Response_Rate_by_Tract/FeatureServer/0/query?where=tract+%3E+500098+AND+tract+%3C+550000+AND+CRRALL+%3E+40+AND+CRRALL+%3C50&objectIds=&time=&geometry=&geometryType=esriGeometryEnvelope&inSR=&spatialRel=esriSpatialRelIntersects&resultType=none&distance=0.0&units=esriSRUnit_Meter&returnGeodetic=false&outFields=*&returnGeometry=true&returnCentroid=false&featureEncoding=esriDefault&multipatchOption=xyFootprint&maxAllowableOffset=&geometryPrecision=&outSR=&datumTransformation=&applyVCSProjection=false&returnIdsOnly=false&returnUniqueIdsOnly=false&returnCountOnly=false&returnExtentOnly=false&returnQueryGeometry=false&returnDistinctValues=false&cacheHint=false&orderByFields=&groupByFieldsForStatistics=&outStatistics=&having=&resultOffset=&resultRecordCount=&returnZ=false&returnM=false&returnExceededLimitFeatures=true&quantizationParameters=&sqlFormat=none&f=pgeojson&token="
+        },
+        {
+          id: "2020-response-50",
+          type: "geojson",
+          data: "https://services2.arcgis.com/qvkbeam7Wirps6zC/arcgis/rest/services/Detroit_Census_Response_Rate_by_Tract/FeatureServer/0/query?where=tract+%3E+500098+AND+tract+%3C+550000+AND+CRRALL+%3E+50+AND+CRRALL+%3C60&objectIds=&time=&geometry=&geometryType=esriGeometryEnvelope&inSR=&spatialRel=esriSpatialRelIntersects&resultType=none&distance=0.0&units=esriSRUnit_Meter&returnGeodetic=false&outFields=*&returnGeometry=true&returnCentroid=false&featureEncoding=esriDefault&multipatchOption=xyFootprint&maxAllowableOffset=&geometryPrecision=&outSR=&datumTransformation=&applyVCSProjection=false&returnIdsOnly=false&returnUniqueIdsOnly=false&returnCountOnly=false&returnExtentOnly=false&returnQueryGeometry=false&returnDistinctValues=false&cacheHint=false&orderByFields=&groupByFieldsForStatistics=&outStatistics=&having=&resultOffset=&resultRecordCount=&returnZ=false&returnM=false&returnExceededLimitFeatures=true&quantizationParameters=&sqlFormat=none&f=pgeojson&token="
+        },
+        {
+          id: "2020-response-60",
+          type: "geojson",
+          data: "https://services2.arcgis.com/qvkbeam7Wirps6zC/arcgis/rest/services/Detroit_Census_Response_Rate_by_Tract/FeatureServer/0/query?where=tract+%3E+500098+AND+tract+%3C+550000+AND+CRRALL+%3E+60&objectIds=&time=&geometry=&geometryType=esriGeometryEnvelope&inSR=&spatialRel=esriSpatialRelIntersects&resultType=none&distance=0.0&units=esriSRUnit_Meter&returnGeodetic=false&outFields=*&returnGeometry=true&returnCentroid=false&featureEncoding=esriDefault&multipatchOption=xyFootprint&maxAllowableOffset=&geometryPrecision=&outSR=&datumTransformation=&applyVCSProjection=false&returnIdsOnly=false&returnUniqueIdsOnly=false&returnCountOnly=false&returnExtentOnly=false&returnQueryGeometry=false&returnDistinctValues=false&cacheHint=false&orderByFields=&groupByFieldsForStatistics=&outStatistics=&having=&resultOffset=&resultRecordCount=&returnZ=false&returnM=false&returnExceededLimitFeatures=true&quantizationParameters=&sqlFormat=none&f=pgeojson&token="
         }
       ],
       layers: [
@@ -58,21 +88,69 @@ export default class Controller {
           }
         },
         {
-          "id": "census-fill",
+          "id": "2020-response-low",
           "type": "fill",
-          "source": "census",
-          "source-layer": "census-diqtrn",
+          "source": "2020-response-low",
           "layout": {},
           "paint": {
-            "fill-color": '#9FD5B3',
-            "fill-opacity": .2
+            "fill-color": '#cb4d4f',
+            "fill-opacity": .6
           }
         },
         {
-          "id": "census-borders",
+          "id": "2020-response-20",
+          "type": "fill",
+          "source": "2020-response-20",
+          "layout": {},
+          "paint": {
+            "fill-color": '#E48F22',
+            "fill-opacity": .6
+          }
+        },
+        {
+          "id": "2020-response-30",
+          "type": "fill",
+          "source": "2020-response-30",
+          "layout": {},
+          "paint": {
+            "fill-color": '#9fd5b3',
+            "fill-opacity": .5
+          }
+        },
+        {
+          "id": "2020-response-40",
+          "type": "fill",
+          "source": "2020-response-40",
+          "layout": {},
+          "paint": {
+            "fill-color": '#9fd5b3',
+            "fill-opacity": 1
+          }
+        },
+        {
+          "id": "2020-response-50",
+          "type": "fill",
+          "source": "2020-response-50",
+          "layout": {},
+          "paint": {
+            "fill-color": '#004544',
+            "fill-opacity": .5
+          }
+        },
+        {
+          "id": "2020-response-60",
+          "type": "fill",
+          "source": "2020-response-60",
+          "layout": {},
+          "paint": {
+            "fill-color": '#004544',
+            "fill-opacity": .8
+          }
+        },
+        {
+          "id": "2020-borders",
           "type": "line",
-          "source": "census",
-          "source-layer": "census-diqtrn",
+          "source": "2020-response",
           "layout": {},
           "paint": {
             "line-color": "#004544",
@@ -80,28 +158,37 @@ export default class Controller {
           }
         },
         {
-          "id": "census-hover",
+          "id": "census-fill",
           "type": "fill",
           "source": "census",
           "source-layer": "census-diqtrn",
           "layout": {},
           "paint": {
+            "fill-color": '#9FD5B3',
+            "fill-opacity": 0
+          }
+        },
+        {
+          "id": "census-hover",
+          "type": "fill",
+          "source": "2020-response",
+          "layout": {},
+          "paint": {
             "fill-color": '#004544',
-            "fill-opacity": .4
+            "fill-opacity": 1
           },
-          "filter": ["==", "geoid", ""]
+          "filter": ["==", "ObjectId", ""]
         },
         {
           "id": "census-featured",
           "type": "fill",
-          "source": "census",
-          "source-layer": "census-diqtrn",
+          "source": "2020-response",
           "layout": {},
           "paint": {
             "fill-color": '#004544',
-            "fill-opacity": .6
+            "fill-opacity": 1
           },
-          "filter": ["==", "geoid", ""]
+          "filter": ["==", "ObjectId", ""]
         },
         {
           id: "point",

@@ -29,7 +29,7 @@
     "@mapbox/mapbox-gl-geocoder": "^4.5.0",
     "@turf/simplify": "^5.1.5",
     "@turf/turf": "^5.1.6",
-    "mapbox-gl": "^1.9.1",
+    "mapbox-gl": "^1.10.0",
     "terraformer-arcgis-parser": "^1.1.0"
   },
   "devDependencies": {
@@ -41,6 +41,6 @@
     "babel-preset-env": "^1.7.0",
     "cssnano": "^4.1.10",
     "cypress": "^4.3.0",
-    "sass": "^1.26.3"
+    "sass": "^1.26.5"
   }
 }
