@@ -1,9 +1,10 @@
 'use strict';
 import Map from './map.class.js';
 import Panel from './panel.class.js';
+import data2010 from '../2010.data.json';
 export default class Controller {
   constructor(container) {
-    this.tracData = {},
+    this.tractData = {},
     this.filters = {
       'hardest': null,
       'lowResponse': null,
@@ -203,6 +204,7 @@ export default class Controller {
     });
     this.panel = new Panel(container);
     this.startGauge();
+    this.build2010Data();
   }
   
   initialForm(ev,_controller){
@@ -227,8 +229,14 @@ export default class Controller {
     });
   }
 
+  build2010Data(){
+    data2010.data.forEach((track) => {
+      this.tractData[track[4]] = track[1];
+    });
+  }
+
   updatePanel(ev, _controller){
-    this.panel.buildPanel(ev.info2010, ev.info2020);
+    this.panel.buildPanel(ev.info2010, ev.info2020, ev.resp2010);
   }
 
   removeFilter(ev, _controller){

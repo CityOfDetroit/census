@@ -32,6 +32,7 @@ import './sass/styles.scss';
         layers: ['2020-response']
       });
       data.info2020 = features2020[0];
+      (controller.tractData[features2020[0].properties.tract]) ? data.resp2010 = controller.tractData[features2020[0].properties.tract] : data.resp2010 = null;
       controller.updatePanel(data, controller);
       document.querySelector('.data-panel').className = 'data-panel active';
     }else{

@@ -33,14 +33,13 @@
     "terraformer-arcgis-parser": "^1.1.0"
   },
   "devDependencies": {
-    "@babel/core": "^7.9.0",
+    "@babel/core": "^7.9.6",
     "@babel/plugin-proposal-class-properties": "^7.8.3",
-    "@babel/preset-env": "^7.9.5",
+    "@babel/preset-env": "^7.9.6",
     "@babel/preset-react": "^7.9.4",
-    "@fortawesome/fontawesome-free": "^5.13.0",
     "babel-preset-env": "^1.7.0",
     "cssnano": "^4.1.10",
-    "cypress": "^4.3.0",
+    "cypress": "^4.5.0",
     "sass": "^1.26.5"
   }
 }

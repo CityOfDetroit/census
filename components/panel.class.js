@@ -4,19 +4,19 @@ export default class Panel {
         this.container = container;
     }
 
-    buildPanel(data, data2020){
-        this.container.innerHTML = this.buildMarkUp(data, data2020);
+    buildPanel(data, data2020, resp2010){
+        this.container.innerHTML = this.buildMarkUp(data, data2020, resp2010);
     }
 
     clearPanel(){
         this.container.innerHTML = '';
     }
 
-    buildMarkUp(data, data2020){
+    buildMarkUp(data, data2020, resp2010){
         let html = `
             <h5>${data.properties.namelsad}</h5>
             <section class="response-rates">
-            <div><span><strong>2010 RESPONSE RATE</strong><br>${parseInt(100 - data.properties.mrr)}%</span></div>
+            <div><span><strong>2010 RESPONSE RATE</strong><br>${resp2010}%</span></div>
             <div><span><strong>2020 RESPONSE RATE</strong><br>${(data2020 != undefined)? `${parseInt(data2020.properties.CRRALL)}%` : `No Data` }</span></div>
             </section>
             <section class="group">
