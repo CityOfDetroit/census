@@ -27,7 +27,7 @@ export default class Panel {
             </section>
             <section class="group">
             <span class="header">Population</span>
-            <p><strong>Househods:</strong> ${data.properties.households}</p>
+            <p><strong>Households:</strong> ${data.properties.households}</p>
             <p><strong>Housing Units:</strong> ${data.properties.housing_un}</p>
             <p><strong>Total Population:</strong> ${data.properties.total_pop_}</p>
             <p><strong>Total Population under 5:</strong> ${data.properties.pop_under_}</p>
@@ -53,7 +53,6 @@ export default class Panel {
                 <a class="btn resource" href="/taxonomy/term/5441" target="_blank">Get Involved</a>
             </article>
             </section>
-            <p><small>Some small print and disclaimer.</small></p>
         `;
         
         return html;
