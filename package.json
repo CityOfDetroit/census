@@ -26,7 +26,7 @@
   },
   "homepage": "https://github.com/CityOfDetroit/census#readme",
   "dependencies": {
-    "@mapbox/mapbox-gl-geocoder": "^4.5.0",
+    "@mapbox/mapbox-gl-geocoder": "^4.7.4",
     "@turf/simplify": "^5.1.5",
     "@turf/turf": "^5.1.6",
     "mapbox-gl": "^1.11.0",
